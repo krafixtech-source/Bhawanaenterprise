@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Plus, Minus, MessageSquare, CheckCircle, Moon, Sun } from 'lucide-react'
+import { ArrowRight, Plus, Minus, MessageSquare, CheckCircle, Moon, Sun, Key, MapPin, Home as HomeIcon } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { FloorPlan } from '../components/FloorPlan'
@@ -12,6 +12,42 @@ export const Home: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
   const [hoveredService, setHoveredService] = useState<number | null>(null)
   const [hoveredBuilder, setHoveredBuilder] = useState<number | null>(null)
+  const [currentHouseIndex, setCurrentHouseIndex] = useState(0)
+
+  const houses = [
+    {
+      name: 'House Type C',
+      line: 'Comfort Line',
+      completion: 'Q4 2024',
+      plotSize: '0.12 HA',
+      houseArea: '450 M²',
+      floorPlanVariant: 2,
+    },
+    {
+      name: 'House Type B',
+      line: 'Signature Line',
+      completion: 'Q1 2025',
+      plotSize: '0.15 HA',
+      houseArea: '480 M²',
+      floorPlanVariant: 1,
+    },
+    {
+      name: 'House Type A',
+      line: 'Elite Line',
+      completion: 'Q2 2025',
+      plotSize: '0.18 HA',
+      houseArea: '520 M²',
+      floorPlanVariant: 0,
+    }
+  ]
+
+  const handleNextHouse = () => {
+    setCurrentHouseIndex((prev) => (prev + 1) % houses.length)
+  }
+
+  const handlePrevHouse = () => {
+    setCurrentHouseIndex((prev) => (prev - 1 + houses.length) % houses.length)
+  }
 
   // Mouse coordinate refs for parallax
   const heroMouse = useRef({ x: 0, y: 0 })
@@ -28,6 +64,7 @@ export const Home: React.FC = () => {
   const heroContainerRef = useRef<HTMLDivElement>(null)
   const heroImageContainerRef = useRef<HTMLDivElement>(null)
   const heroOverlayRef = useRef<HTMLDivElement>(null)
+  const splitPanelRef = useRef<HTMLDivElement>(null)
   const sectionTransitionRef = useRef<HTMLDivElement>(null)
   const transitionImgRef = useRef<HTMLImageElement>(null)
   const transitionProgressRef = useRef<HTMLDivElement>(null)
@@ -103,6 +140,11 @@ export const Home: React.FC = () => {
         width: '100vw',
         height: '100vh',
         duration: 1,
+      }, 0)
+      .to(splitPanelRef.current, {
+        y: '100%',
+        opacity: 0,
+        duration: 0.8,
       }, 0)
 
       // Section 03 Cinematic Transition Viewport Zoom
@@ -232,174 +274,194 @@ export const Home: React.FC = () => {
         ref={heroContainerRef} 
         className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-brand-dark"
       >
-        {/* Layer 1: Background Images (z-10) */}
+        {/* Cinematic Image Container (Visible in the top viewport section on desktop) */}
         <div 
-          ref={heroBgRef}
-          className="absolute w-full h-full overflow-hidden transition-all duration-[1200ms] ease-out z-10 will-change-transform"
+          ref={heroImageContainerRef}
+          className="relative lg:absolute top-0 left-0 w-full h-[65vh] lg:h-[calc(100vh-260px)] overflow-hidden z-10 transition-all duration-[1200ms] ease-out"
         >
+          {/* Layer 1: Background Images (z-10) */}
           <div 
-            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 scale-[1.03]"
-            style={{ 
-              backgroundImage: `url('/hero-day.png')`,
-              opacity: darkMode ? 0 : 1,
-            }}
-          />
-          <div 
-            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 scale-[1.03]"
-            style={{ 
-              backgroundImage: `url('/hero-night.png')`,
-              opacity: darkMode ? 1 : 0,
-            }}
-          />
-          <div className="absolute inset-0 bg-brand-dark/30 pointer-events-none transition-opacity duration-1000" />
-        </div>
-
-        {/* Layer 2: Giant Display Typography (z-20) */}
-        <div 
-          ref={heroTitleRef} 
-          className="absolute top-[11vh] w-full flex justify-center pointer-events-none select-none z-20 will-change-transform"
-        >
-          <h1 className="text-brand-white text-center font-display text-[9.5vw] leading-none font-extrabold uppercase tracking-tight select-none">
-            BHAWANA ENTERPRISES
-          </h1>
-        </div>
-
-
-
-        {/* Layer 3: Foreground Overlap Building Mask (z-30) - Clipped to perfectly match the double-tier roofline silhouette of the Jaipur villa */}
-        <div 
-          ref={heroFgRef}
-          className="absolute w-full h-full overflow-hidden transition-all duration-[1200ms] ease-out z-30 pointer-events-none will-change-transform"
-          style={{ clipPath: 'polygon(0% 46%, 12% 46%, 12% 26%, 29% 26%, 29% 46%, 100% 46%, 100% 100%, 0% 100%)' }}
-        >
-          <div 
-            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 scale-[1.03]"
-            style={{ 
-              backgroundImage: `url('/hero-day.png')`,
-              opacity: darkMode ? 0 : 1,
-            }}
-          />
-          <div 
-            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 scale-[1.03]"
-            style={{ 
-              backgroundImage: `url('/hero-night.png')`,
-              opacity: darkMode ? 1 : 0,
-            }}
-          />
-          <div className="absolute inset-0 bg-brand-dark/30 pointer-events-none transition-opacity duration-1000" />
-        </div>
-
-        {/* Layer 4: Hero Description and Day/Night Switcher overlays (z-40) */}
-        <div 
-          ref={heroOverlayRef}
-          className="absolute inset-0 z-40 flex flex-col justify-end p-6 md:p-12 pb-16 pointer-events-none"
-        >
-          <div className="w-full flex justify-between items-end">
-            {/* Description Text (bottom-left) */}
-            <div className="max-w-xl text-left pointer-events-auto">
-              <p className="text-brand-white font-sans text-xs md:text-sm leading-relaxed tracking-wide drop-shadow-md">
-                A vision that transcends property and space. Backed by over 20+ years of professional trust, structured deal negotiation, and legal coordination, we guide you to Jaipur's most exclusive residential developments, strategic commercial locations, and premium agricultural land investments.
-              </p>
-            </div>
-            
-            {/* SECTION 02 — DAY / NIGHT EXPERIENTIAL SWITCH (bottom-right) */}
-            <div className="pointer-events-auto flex items-center bg-black/45 border border-white/10 p-1.5 rounded-full backdrop-blur-md gap-1">
-              <button
-                onClick={() => setDarkMode(true)}
-                className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${darkMode ? 'bg-white text-black' : 'text-white hover:bg-white/10'}`}
-                title="Night Mode"
-                data-cursor="TOGGLE"
-              >
-                <Moon size={14} />
-              </button>
-              <button
-                onClick={() => setDarkMode(false)}
-                className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${!darkMode ? 'bg-white text-black' : 'text-white hover:bg-white/10'}`}
-                title="Day Mode"
-                data-cursor="TOGGLE"
-              >
-                <Sun size={14} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* SPLIT BOTTOM PANEL */}
-      <div className="w-full grid grid-cols-1 lg:grid-cols-12 relative z-40 border-y border-brand-stone/10">
-        
-        {/* Left blueprint panel (40% width) - off-white background */}
-        <div className="lg:col-span-5 bg-brand-light p-8 flex flex-col justify-between min-h-[300px]">
-          <div className="flex justify-between items-center mb-4 text-brand-dark">
-            <span className="text-[10px] font-bold tracking-[3px] text-brand-bronze uppercase">ARCHITECTURAL BLUEPRINT</span>
-            <span className="text-[10px] uppercase tracking-widest font-mono font-bold">VILLA LAYOUT TYPE C</span>
-          </div>
-          <div className="h-[200px] flex items-center justify-center bg-white/20 rounded-xl p-4 border border-brand-dark/5 shadow-inner">
-            <FloorPlan darkMode={false} />
-          </div>
-        </div>
-
-        {/* Right statistics matrix (60% width) - solid black background */}
-        <div className="lg:col-span-7 bg-brand-dark p-8 flex flex-col justify-between min-h-[300px]">
-          {/* Stats matrix columns */}
-          <div className="grid grid-cols-3 gap-8">
-            <div className="text-left">
-              <span className="block text-[10px] uppercase tracking-[3px] text-brand-stone font-bold mb-1">Completion:</span>
-              <span className="text-brand-white font-display text-4xl md:text-5xl tracking-wide font-extrabold uppercase">
-                Q4 2024
-              </span>
-            </div>
-            
-            <div className="text-left">
-              <span className="block text-[10px] uppercase tracking-[3px] text-brand-stone font-bold mb-1">Plot Size:</span>
-              <span className="text-brand-white font-display text-4xl md:text-5xl tracking-wide font-extrabold uppercase">
-                0.12 HA
-              </span>
-            </div>
-
-            <div className="text-left">
-              <span className="block text-[10px] uppercase tracking-[3px] text-brand-stone font-bold mb-1">House Area:</span>
-              <span className="text-brand-white font-display text-4xl md:text-5xl tracking-wide font-extrabold uppercase">
-                450 M²
-              </span>
-            </div>
+            ref={heroBgRef}
+            className="absolute w-full h-full overflow-hidden transition-all duration-[1200ms] ease-out z-10 will-change-transform"
+          >
+            <div 
+              className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 scale-[1.03]"
+              style={{ 
+                backgroundImage: `url('/hero-day.png')`,
+                opacity: darkMode ? 0 : 1,
+              }}
+            />
+            <div 
+              className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 scale-[1.03]"
+              style={{ 
+                backgroundImage: `url('/hero-night.png')`,
+                opacity: darkMode ? 1 : 0,
+              }}
+            />
+            <div className="absolute inset-0 bg-brand-dark/30 pointer-events-none transition-opacity duration-1000" />
           </div>
 
-          {/* Controls and circular thumbnails */}
-          <div className="flex justify-between items-end border-t border-brand-stone/10 pt-6 mt-8">
-            {/* Arrows */}
-            <div className="flex gap-3">
-              <button 
-                className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-white hover:text-brand-dark hover:border-brand-white transition-all text-brand-white text-sm"
-                data-cursor="PREV"
-              >
-                ‹
-              </button>
-              <button 
-                className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-brand-white hover:text-brand-dark hover:border-brand-white transition-all text-brand-white text-sm"
-                data-cursor="NEXT"
-              >
-                ›
-              </button>
-            </div>
+          {/* Layer 2: Giant Display Typography (z-20) */}
+          <div 
+            ref={heroTitleRef} 
+            className="absolute top-[12vh] w-full flex justify-center pointer-events-none select-none z-20 will-change-transform"
+          >
+            <h1 className="text-brand-white text-center font-display text-[15vw] md:text-[18vw] leading-none font-extrabold uppercase tracking-[-0.03em] select-none opacity-95">
+              BHAWANA
+            </h1>
+          </div>
 
-            {/* Thumbnail preview */}
-            <div className="flex items-center gap-4 text-right">
-              <div>
-                <span className="block text-[10px] uppercase tracking-[2px] text-brand-stone font-bold">House Type C</span>
-                <span className="text-[9px] uppercase tracking-widest text-brand-stone opacity-60 font-mono mt-0.5 block">— Comfort Line</span>
+          {/* Layer 3: Foreground Overlap Building Mask (z-30) - Clipped to perfectly match the flat roofline silhouette of the Jaipur villa */}
+          <div 
+            ref={heroFgRef}
+            className="absolute w-full h-full overflow-hidden transition-all duration-[1200ms] ease-out z-30 pointer-events-none will-change-transform"
+            style={{ clipPath: 'polygon(0% 46%, 100% 46%, 100% 100%, 0% 100%)' }}
+          >
+            <div 
+              className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 scale-[1.03]"
+              style={{ 
+                backgroundImage: `url('/hero-day.png')`,
+                opacity: darkMode ? 0 : 1,
+              }}
+            />
+            <div 
+              className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 scale-[1.03]"
+              style={{ 
+                backgroundImage: `url('/hero-night.png')`,
+                opacity: darkMode ? 1 : 0,
+              }}
+            />
+            <div className="absolute inset-0 bg-brand-dark/30 pointer-events-none transition-opacity duration-1000" />
+          </div>
+
+          {/* Layer 4: Hero Description and Day/Night Switcher overlays (z-40) */}
+          <div 
+            ref={heroOverlayRef}
+            className="absolute inset-0 z-40 flex flex-col justify-end p-6 md:p-12 pb-20 lg:pb-24 pointer-events-none"
+          >
+            <div className="w-full flex justify-between items-end">
+              {/* Description Text (bottom-left) */}
+              <div className="max-w-xl text-left pointer-events-auto">
+                <p className="text-brand-white font-sans text-xs md:text-sm leading-relaxed tracking-wide drop-shadow-md">
+                  A vision that transcends property and space, where unmatched craftsmanship inspires elegance and innovation to enrich lives.
+                </p>
               </div>
               
-              {/* Overlapping circular images */}
-              <div className="flex -space-x-4">
-                <div 
-                  className="w-10 h-10 rounded-full border border-brand-white/20 bg-cover bg-center shadow-lg"
-                  style={{ backgroundImage: `url('/hero-night.png')` }}
-                />
-                <div 
-                  className="w-10 h-10 rounded-full border border-brand-white/20 bg-cover bg-center shadow-lg"
-                  style={{ backgroundImage: `url('/hero-day.png')` }}
-                />
+              {/* SECTION 02 — DAY / NIGHT EXPERIENTIAL SWITCH (bottom-right) */}
+              <div className="pointer-events-auto flex items-center bg-black/45 border border-white/10 p-1.5 rounded-full backdrop-blur-md gap-1">
+                <button
+                  onClick={() => setDarkMode(true)}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${darkMode ? 'bg-white text-black' : 'text-white hover:bg-white/10'}`}
+                  title="Night Mode"
+                  data-cursor="TOGGLE"
+                >
+                  <Moon size={14} />
+                </button>
+                <button
+                  onClick={() => setDarkMode(false)}
+                  className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${!darkMode ? 'bg-white text-black' : 'text-white hover:bg-white/10'}`}
+                  title="Day Mode"
+                  data-cursor="TOGGLE"
+                >
+                  <Sun size={14} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Split Bottom Panel (visible inside the first screen at the bottom) */}
+        <div
+          ref={splitPanelRef}
+          className={`relative lg:absolute bottom-0 left-0 w-full min-h-[35vh] lg:h-[260px] z-20 border-t ${darkMode ? 'border-white/5 bg-[#101110]' : 'border-brand-stone/10 bg-brand-dark'} flex flex-col justify-end transition-colors duration-1000`}
+        >
+          <div className="w-full grid grid-cols-1 lg:grid-cols-12 relative h-full">
+            {/* Left blueprint panel */}
+            <div className={`lg:col-span-5 p-6 flex flex-col justify-center h-full transition-colors duration-1000 ${darkMode ? 'bg-[#f5f5f7]' : 'bg-black'}`}>
+              <div className="h-[140px] flex items-center justify-center bg-transparent p-2">
+                <FloorPlan darkMode={!darkMode} variant={houses[currentHouseIndex].floorPlanVariant} />
+              </div>
+            </div>
+
+            {/* Right statistics matrix */}
+            <div className={`lg:col-span-7 p-6 md:p-8 flex flex-col justify-between h-full transition-colors duration-1000 ${darkMode ? 'bg-[#101110] text-brand-light' : 'bg-[#f5f5f7] text-brand-dark'}`}>
+              {/* Stats matrix columns */}
+              <div className="grid grid-cols-3 gap-4 md:gap-6">
+                <div className="text-left">
+                  <span className={`flex items-center gap-1 text-[9px] md:text-[11px] uppercase tracking-[1.5px] font-bold mb-1 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                    <Key size={10} className={darkMode ? 'text-gray-500' : 'text-gray-400'} />
+                    Completion:
+                  </span>
+                  <span className={`font-display text-2xl md:text-3xl lg:text-4xl tracking-wide font-extrabold uppercase block ${darkMode ? 'text-white' : 'text-black'}`}>
+                    {houses[currentHouseIndex].completion}
+                  </span>
+                </div>
+                
+                <div className="text-left">
+                  <span className={`flex items-center gap-1 text-[9px] md:text-[11px] uppercase tracking-[1.5px] font-bold mb-1 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                    <MapPin size={10} className={darkMode ? 'text-gray-500' : 'text-gray-400'} />
+                    Plot Size:
+                  </span>
+                  <span className={`font-display text-2xl md:text-3xl lg:text-4xl tracking-wide font-extrabold uppercase block ${darkMode ? 'text-white' : 'text-black'}`}>
+                    {houses[currentHouseIndex].plotSize}
+                  </span>
+                </div>
+
+                <div className="text-left">
+                  <span className={`flex items-center gap-1 text-[9px] md:text-[11px] uppercase tracking-[1.5px] font-bold mb-1 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                    <HomeIcon size={10} className={darkMode ? 'text-gray-500' : 'text-gray-400'} />
+                    House Area:
+                  </span>
+                  <span className={`font-display text-2xl md:text-3xl lg:text-4xl tracking-wide font-extrabold uppercase block ${darkMode ? 'text-white' : 'text-black'}`}>
+                    {houses[currentHouseIndex].houseArea}
+                  </span>
+                </div>
+              </div>
+
+              {/* Controls and circular thumbnails */}
+              <div className={`flex justify-between items-end border-t pt-4 mt-6 ${darkMode ? 'border-white/10' : 'border-black/10'}`}>
+                {/* Arrows (Big circles, with Next button highlighted in blue) */}
+                <div className="flex gap-3 items-center">
+                  <button 
+                    onClick={handlePrevHouse}
+                    className={`w-12 h-12 rounded-full border flex items-center justify-center transition-all text-sm ${darkMode ? 'border-white/10 text-white hover:bg-white hover:text-black hover:border-white' : 'border-black/10 text-black hover:bg-black hover:text-white hover:border-black'}`}
+                    title="Previous House Type"
+                    data-cursor="PREV"
+                  >
+                    ‹
+                  </button>
+                  <button 
+                    onClick={handleNextHouse}
+                    className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all text-sm font-bold ${darkMode ? 'border-[#0a84ff] text-[#0a84ff] hover:bg-[#0a84ff] hover:text-white' : 'border-[#0066cc] text-[#0066cc] hover:bg-[#0066cc] hover:text-white'}`}
+                    title="Next House Type"
+                    data-cursor="NEXT"
+                  >
+                    ›
+                  </button>
+                </div>
+
+                {/* Thumbnail preview (Big circles) */}
+                <div className="flex items-center gap-4 text-right">
+                  <div>
+                    <span className={`block text-[10px] uppercase tracking-[1.5px] font-bold ${darkMode ? 'text-white' : 'text-black'}`}>{houses[currentHouseIndex].name}</span>
+                    <span className={`text-[9px] uppercase tracking-widest font-mono mt-0.5 block ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>— {houses[currentHouseIndex].line}</span>
+                  </div>
+                  
+                  {/* Overlapping circular images - big size */}
+                  <div className="flex -space-x-4">
+                    <div 
+                      className={`w-12 h-12 rounded-full border-2 bg-cover bg-center shadow-md ${darkMode ? 'border-[#101110]' : 'border-[#f5f5f7]'}`}
+                      style={{ 
+                        backgroundImage: `url(${darkMode ? "'/hero-night.png'" : "'/hero-day.png'"})`,
+                        filter: 'brightness(0.4) saturate(0.8)'
+                      }}
+                    />
+                    <div 
+                      className={`w-12 h-12 rounded-full border-2 bg-cover bg-center shadow-md ${darkMode ? 'border-[#101110]' : 'border-[#f5f5f7]'}`}
+                      style={{ backgroundImage: `url(${darkMode ? "'/hero-night.png'" : "'/hero-day.png'"})` }}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

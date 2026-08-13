@@ -77,9 +77,12 @@ export const Navigation: React.FC = () => {
 
       {/* Fullscreen Overlay Menu */}
       {isOpen && (
-        <div className="fixed inset-0 w-full h-full bg-luxury-dark/95 z-[200] flex flex-col justify-between p-8 md:p-16 overflow-y-auto animate-fade-in">
+        <div className="fixed inset-0 w-full h-full bg-[#101110]/98 backdrop-blur-2xl z-[200] flex flex-col justify-between p-8 md:p-16 overflow-y-auto animate-fade-in relative">
+          {/* Subtle gold decoration glow */}
+          <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-brand-bronze/10 rounded-full blur-[150px] pointer-events-none" />
+          
           {/* Close Header */}
-          <div className="flex justify-between items-center w-full">
+          <div className="flex justify-between items-center w-full relative z-10">
             <Link
               to="/"
               onClick={() => handleLinkClick('/')}
@@ -93,106 +96,113 @@ export const Navigation: React.FC = () => {
             </Link>
             <button
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors font-sans text-xs tracking-widest uppercase"
+              className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors font-sans text-xs tracking-widest uppercase cursor-none"
               data-cursor="CLOSE"
             >
-              <X size={16} />
+              <X size={16} className="text-brand-bronze" />
               <span>Close</span>
             </button>
           </div>
 
           {/* Menu Items Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 my-auto py-12">
-            {/* Left Column: Main Links */}
-            <div className="flex flex-col gap-6 md:gap-8 items-start justify-center">
-              <button
-                onClick={() => handleLinkClick('/')}
-                className="text-4xl md:text-6xl font-serif text-white hover:text-luxury-gold transition-colors text-left"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => handleLinkClick('/about.html')}
-                className="text-4xl md:text-6xl font-serif text-white hover:text-luxury-gold transition-colors text-left"
-              >
-                Our Story
-              </button>
-              
-              {/* Dropdown Controller for Services */}
-              <div className="w-full">
-                <button
-                  onClick={() => setServicesOpen(!servicesOpen)}
-                  className="flex items-center gap-4 text-4xl md:text-6xl font-serif text-white hover:text-luxury-gold transition-colors text-left"
-                >
-                  Services
-                  <ChevronDown
-                    className={`transition-transform duration-300 text-luxury-gold w-8 h-8 md:w-12 md:h-12 ${servicesOpen ? 'rotate-180' : ''}`}
-                  />
-                </button>
-                
-                {/* Services Collapsible Container */}
-                <div
-                  className={`grid transition-all duration-500 ease-in-out ${
-                    servicesOpen ? 'grid-rows-[1fr] opacity-100 mt-6' : 'grid-rows-[0fr] opacity-0 pointer-events-none'
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-2 border-l border-luxury-gold/30">
-                      {services.map((service, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => handleLinkClick(service.path)}
-                          className="text-sm md:text-base text-gray-400 hover:text-white transition-colors text-left py-1"
-                        >
-                          • {service.name}
-                        </button>
-                      ))}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 my-auto py-12 relative z-10">
+            {/* Left Column: Main Links (numbered luxury listing) */}
+            <div className="md:col-span-7 flex flex-col gap-4 md:gap-6 items-start justify-center">
+              {[
+                { name: 'Home', path: '/' },
+                { name: 'Our Story', path: '/about.html' },
+                { name: 'Services', path: null, isServices: true },
+                { name: 'Gallery', path: '/gallery.html' },
+                { name: 'Contact', path: '/contact.html' },
+                { name: 'Careers', path: '/career.html' }
+              ].map((link, idx) => {
+                const num = String(idx + 1).padStart(2, '0');
+                if (link.isServices) {
+                  return (
+                    <div key={idx} className="w-full">
+                      <button
+                        onClick={() => setServicesOpen(!servicesOpen)}
+                        className="group flex items-baseline text-left font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white hover:text-brand-bronze transition-all duration-300 transform hover:translate-x-3 cursor-none"
+                        data-cursor="SELECT"
+                      >
+                        <span className="font-mono text-xs md:text-sm text-brand-bronze/70 mr-4 tracking-widest group-hover:text-white transition-colors">{num} //</span>
+                        Services
+                        <ChevronDown
+                          className={`ml-4 transition-transform duration-300 text-brand-bronze w-6 h-6 md:w-8 md:h-8 ${servicesOpen ? 'rotate-180' : ''}`}
+                        />
+                      </button>
+                      
+                      {/* Services Collapsible Container */}
+                      <div
+                        className={`grid transition-all duration-500 ease-in-out ${
+                          servicesOpen ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0 pointer-events-none'
+                        }`}
+                      >
+                        <div className="overflow-hidden">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-6 border-l border-brand-bronze/30 py-2">
+                            {services.map((service, sIdx) => (
+                              <button
+                                key={sIdx}
+                                onClick={() => handleLinkClick(service.path)}
+                                className="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all text-left py-1 cursor-none"
+                                data-cursor="OPEN"
+                              >
+                                • {service.name}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                  );
+                }
 
-              <button
-                onClick={() => handleLinkClick('/gallery.html')}
-                className="text-4xl md:text-6xl font-serif text-white hover:text-luxury-gold transition-colors text-left"
-              >
-                Gallery
-              </button>
-              <button
-                onClick={() => handleLinkClick('/contact.html')}
-                className="text-4xl md:text-6xl font-serif text-white hover:text-luxury-gold transition-colors text-left"
-              >
-                Contact
-              </button>
-              <button
-                onClick={() => handleLinkClick('/career.html')}
-                className="text-4xl md:text-6xl font-serif text-white hover:text-luxury-gold transition-colors text-left"
-              >
-                Careers
-              </button>
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => handleLinkClick(link.path!)}
+                    className="group flex items-baseline text-left font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white hover:text-brand-bronze transition-all duration-300 transform hover:translate-x-3 cursor-none"
+                    data-cursor="SELECT"
+                  >
+                    <span className="font-mono text-xs md:text-sm text-brand-bronze/70 mr-4 tracking-widest group-hover:text-white transition-colors">{num} //</span>
+                    {link.name}
+                  </button>
+                )
+              })}
             </div>
 
             {/* Right Column: Contact Details & Visual Info */}
-            <div className="flex flex-col justify-center gap-8 border-t md:border-t-0 md:border-l border-white/10 pt-12 md:pt-0 md:pl-16">
-              <div>
-                <h4 className="text-[10px] tracking-[4px] uppercase text-gray-500 mb-2">Office Address</h4>
-                <p className="text-white text-sm leading-relaxed font-sans max-w-sm">
+            <div className="md:col-span-5 flex flex-col justify-center gap-10 border-t md:border-t-0 md:border-l border-white/10 pt-12 md:pt-0 md:pl-16">
+              <div className="group">
+                <h4 className="text-[10px] tracking-[4px] uppercase text-brand-bronze font-bold mb-3 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-bronze animate-pulse"></span>
+                  Corporate Office
+                </h4>
+                <p className="text-gray-300 text-sm leading-relaxed font-sans max-w-sm group-hover:text-white transition-colors">
                   REALTY CHAMBER (BHAWANA ENTERPRISES),<br />
                   Malviya Nagar, Jaipur, Rajasthan 302017
                 </p>
               </div>
-              <div>
-                <h4 className="text-[10px] tracking-[4px] uppercase text-gray-500 mb-2">Direct Contact</h4>
-                <a href="tel:+917599912345" className="block text-white hover:text-luxury-gold text-lg font-serif mb-1">
+              
+              <div className="group">
+                <h4 className="text-[10px] tracking-[4px] uppercase text-brand-bronze font-bold mb-3 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-bronze animate-pulse"></span>
+                  Direct Contact
+                </h4>
+                <a href="tel:+917599912345" className="block text-white hover:text-brand-bronze text-2xl font-serif mb-2 transition-colors cursor-none" data-cursor="CALL">
                   +91 75999 12345
                 </a>
-                <a href="mailto:sales@bhawanaenterprises.com" className="block text-gray-400 hover:text-white text-sm">
+                <a href="mailto:sales@bhawanaenterprises.com" className="block text-gray-400 hover:text-white text-sm transition-colors cursor-none" data-cursor="MAIL">
                   sales@bhawanaenterprises.com
                 </a>
               </div>
-              <div>
-                <h4 className="text-[10px] tracking-[4px] uppercase text-gray-500 mb-2">Consultancy Hours</h4>
-                <p className="text-gray-400 text-sm">Mon – Sun, 8:00 AM – 8:00 PM</p>
+              
+              <div className="group">
+                <h4 className="text-[10px] tracking-[4px] uppercase text-brand-bronze font-bold mb-3 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-bronze animate-pulse"></span>
+                  Consultancy Hours
+                </h4>
+                <p className="text-gray-400 text-sm group-hover:text-white transition-colors">Mon – Sun, 8:00 AM – 8:00 PM</p>
               </div>
             </div>
           </div>
