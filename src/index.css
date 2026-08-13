@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-display: "Bebas Neue", sans-serif;
+  
+  /* Brand Visual DNA Colors */
+  --color-brand-dark: #101110;
+  --color-brand-charcoal: #171917;
+  --color-brand-light: #F1EEE7;
+  --color-brand-stone: #C8C2B7;
+  --color-brand-bronze: #B18A57;
+  --color-brand-white: #FFFFFF;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #101110;
+}
+::-webkit-scrollbar-thumb {
+  background: #171917;
+  border: 1px solid #c8c2b730;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b18a57;
+}
+
+/* Global Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #101110;
+  font-family: var(--font-sans);
+  color: #F1EEE7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Trailing Cursor */
+.custom-cursor {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(241, 238, 231, 0.5);
+  border-radius: 50%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translate3d(-100px, -100px, 0);
+  pointer-events: none;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform, width, height, background-color;
+  margin: -14px 0 0 -14px;
+}
+
+.custom-cursor-dot {
+  width: 4px;
+  height: 4px;
+  background-color: #F1EEE7;
+  border-radius: 50%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translate3d(-100px, -100px, 0);
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform, width, height;
+  margin: -2px 0 0 -2px;
+}
+
+/* Marquee Ticker Strip */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 25s linear infinite;
+}
+
+/* Glassmorphism Panels */
+.glass-panel {
+  background: rgba(23, 25, 23, 0.65);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(200, 194, 183, 0.1);
+}
+
+.glass-panel-light {
+  background: rgba(241, 238, 231, 0.85);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(16, 17, 16, 0.1);
+}
+
+/* Hide default cursor on interactive components */
+.interactive-hover-area {
+  cursor: none;
+}
+
+/* Smooth Transitions */
+.theme-transition {
+  transition: background-color 1000ms cubic-bezier(0.25, 1, 0.5, 1),
+              color 1000ms cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 1000ms cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 1000ms cubic-bezier(0.25, 1, 0.5, 1),
+              transform 1000ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Typography animations */
+.text-mask-reveal {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.reveal-inner {
+  display: inline-block;
+  animation: revealUp 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes revealUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Image reveal bottom to top */
+.reveal-bottom-to-top {
+  clip-path: inset(100% 0% 0% 0%);
+  will-change: clip-path;
+}
+
