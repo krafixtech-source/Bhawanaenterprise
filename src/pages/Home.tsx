@@ -326,8 +326,8 @@ export const Home: React.FC = () => {
             ref={heroTitleRef} 
             className="absolute top-[12vh] w-full flex justify-center pointer-events-none select-none z-20 will-change-transform"
           >
-            <h1 className="text-brand-white text-center font-display text-[15vw] md:text-[18vw] leading-none font-extrabold uppercase tracking-[-0.03em] select-none opacity-95">
-              BHAWANA
+            <h1 className="text-brand-white text-center font-display text-[9.5vw] md:text-[11.5vw] leading-none font-extrabold uppercase tracking-[-0.03em] select-none opacity-95">
+              Your new Home
             </h1>
           </div>
 

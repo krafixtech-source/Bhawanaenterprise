@@ -91,7 +91,7 @@ export const Navigation: React.FC = () => {
 
       {/* Fullscreen Overlay Menu */}
       {isOpen && (
-        <div data-lenis-prevent className="fixed inset-0 w-full h-full bg-[#101110]/98 backdrop-blur-2xl z-[200] flex flex-col justify-start md:justify-between p-6 md:p-16 overflow-y-auto animate-fade-in">
+        <div data-lenis-prevent className="fixed inset-0 w-full h-full bg-brand-dark/98 backdrop-blur-2xl z-[200] flex flex-col justify-start md:justify-between p-6 md:p-16 overflow-y-auto animate-fade-in transition-colors duration-1000">
           {/* Subtle gold decoration glow */}
           <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-brand-bronze/10 rounded-full blur-[150px] pointer-events-none" />
           
@@ -110,7 +110,7 @@ export const Navigation: React.FC = () => {
             </Link>
             <button
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors font-sans text-xs tracking-widest uppercase cursor-none"
+              className="flex items-center gap-2 text-brand-stone hover:text-brand-light transition-colors font-sans text-xs tracking-widest uppercase cursor-none"
               data-cursor="CLOSE"
             >
               <X size={16} className="text-brand-bronze" />
@@ -136,10 +136,10 @@ export const Navigation: React.FC = () => {
                     <div key={idx} className="w-full">
                       <button
                         onClick={() => setServicesOpen(!servicesOpen)}
-                        className="group flex items-baseline text-left font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white hover:text-brand-bronze transition-all duration-300 transform hover:translate-x-3 cursor-none"
+                        className="group flex items-baseline text-left font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-brand-white hover:text-brand-bronze transition-all duration-300 transform hover:translate-x-3 cursor-none"
                         data-cursor="SELECT"
                       >
-                        <span className="font-mono text-xs md:text-sm text-brand-bronze/70 mr-4 tracking-widest group-hover:text-white transition-colors">{num} //</span>
+                        <span className="font-mono text-xs md:text-sm text-brand-bronze/70 mr-4 tracking-widest group-hover:text-brand-light transition-colors">{num} //</span>
                         Services
                         <ChevronDown
                           className={`ml-4 transition-transform duration-300 text-brand-bronze w-6 h-6 md:w-8 md:h-8 ${servicesOpen ? 'rotate-180' : ''}`}
@@ -158,7 +158,7 @@ export const Navigation: React.FC = () => {
                               <button
                                 key={sIdx}
                                 onClick={() => handleLinkClick(service.path)}
-                                className="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all text-left py-1 cursor-none"
+                                className="text-sm text-brand-stone hover:text-brand-light hover:translate-x-1 transition-all text-left py-1 cursor-none"
                                 data-cursor="OPEN"
                               >
                                 • {service.name}
@@ -175,10 +175,10 @@ export const Navigation: React.FC = () => {
                   <button
                     key={idx}
                     onClick={() => handleLinkClick(link.path!)}
-                    className="group flex items-baseline text-left font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white hover:text-brand-bronze transition-all duration-300 transform hover:translate-x-3 cursor-none"
+                    className="group flex items-baseline text-left font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-brand-white hover:text-brand-bronze transition-all duration-300 transform hover:translate-x-3 cursor-none"
                     data-cursor="SELECT"
                   >
-                    <span className="font-mono text-xs md:text-sm text-brand-bronze/70 mr-4 tracking-widest group-hover:text-white transition-colors">{num} //</span>
+                    <span className="font-mono text-xs md:text-sm text-brand-bronze/70 mr-4 tracking-widest group-hover:text-brand-light transition-colors">{num} //</span>
                     {link.name}
                   </button>
                 )
@@ -186,13 +186,13 @@ export const Navigation: React.FC = () => {
             </div>
 
             {/* Right Column: Contact Details & Visual Info */}
-            <div className="md:col-span-5 flex flex-col justify-center gap-6 md:gap-10 border-t md:border-t-0 md:border-l border-white/10 pt-8 md:pt-0 md:pl-16">
+            <div className="md:col-span-5 flex flex-col justify-center gap-6 md:gap-10 border-t md:border-t-0 md:border-l border-brand-stone/10 pt-8 md:pt-0 md:pl-16">
               <div className="group">
                 <h4 className="text-[10px] tracking-[4px] uppercase text-brand-bronze font-bold mb-3 flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-bronze animate-pulse"></span>
                   Corporate Office
                 </h4>
-                <p className="text-gray-300 text-sm leading-relaxed font-sans max-w-sm group-hover:text-white transition-colors">
+                <p className="text-brand-stone text-sm leading-relaxed font-sans max-w-sm group-hover:text-brand-light transition-colors">
                   REALTY CHAMBER (BHAWANA ENTERPRISES),<br />
                   Malviya Nagar, Jaipur, Rajasthan 302017
                 </p>
@@ -203,10 +203,10 @@ export const Navigation: React.FC = () => {
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-bronze animate-pulse"></span>
                   Direct Contact
                 </h4>
-                <a href="tel:+917599912345" className="block text-white hover:text-brand-bronze text-2xl font-serif mb-2 transition-colors cursor-none" data-cursor="CALL">
+                <a href="tel:+917599912345" className="block text-brand-white hover:text-brand-bronze text-2xl font-serif mb-2 transition-colors cursor-none" data-cursor="CALL">
                   +91 75999 12345
                 </a>
-                <a href="mailto:sales@bhawanaenterprises.com" className="block text-gray-400 hover:text-white text-sm transition-colors cursor-none" data-cursor="MAIL">
+                <a href="mailto:sales@bhawanaenterprises.com" className="block text-brand-stone hover:text-brand-light text-sm transition-colors cursor-none" data-cursor="MAIL">
                   sales@bhawanaenterprises.com
                 </a>
               </div>
@@ -216,21 +216,21 @@ export const Navigation: React.FC = () => {
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-bronze animate-pulse"></span>
                   Consultancy Hours
                 </h4>
-                <p className="text-gray-400 text-sm group-hover:text-white transition-colors">Mon – Sun, 8:00 AM – 8:00 PM</p>
+                <p className="text-brand-stone text-sm group-hover:text-brand-light transition-colors">Mon – Sun, 8:00 AM – 8:00 PM</p>
               </div>
             </div>
           </div>
 
           {/* Menu Footer */}
-          <div className="flex flex-wrap justify-between items-center gap-4 pt-6 border-t border-white/5 w-full text-xs text-gray-500 font-sans">
+          <div className="flex flex-wrap justify-between items-center gap-4 pt-6 border-t border-brand-stone/5 w-full text-xs text-brand-stone font-sans">
             <div>
               © 2026 Bhawana Enterprises. All rights reserved.
             </div>
             <div className="flex gap-6">
-              <a href="https://www.facebook.com/share/18KeQZ9bLm/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Facebook</a>
-              <a href="https://www.instagram.com/bhawana_enterprises" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Instagram</a>
-              <a href="https://www.linkedin.com/in/prakash-choudhary-08994529a/" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
-              <a href="https://www.youtube.com/@Prakash_0089" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">YouTube</a>
+              <a href="https://www.facebook.com/share/18KeQZ9bLm/" target="_blank" rel="noreferrer" className="hover:text-brand-light transition-colors">Facebook</a>
+              <a href="https://www.instagram.com/bhawana_enterprises" target="_blank" rel="noreferrer" className="hover:text-brand-light transition-colors">Instagram</a>
+              <a href="https://www.linkedin.com/in/prakash-choudhary-08994529a/" target="_blank" rel="noreferrer" className="hover:text-brand-light transition-colors">LinkedIn</a>
+              <a href="https://www.youtube.com/@Prakash_0089" target="_blank" rel="noreferrer" className="hover:text-brand-light transition-colors">YouTube</a>
             </div>
           </div>
         </div>
