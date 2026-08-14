@@ -122,30 +122,32 @@ export const Home: React.FC = () => {
   // 2. GSAP ScrollTrigger Timelines
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Section 01 Hero Cinematic Unpin & Zoom
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: heroContainerRef.current,
-          start: 'top top',
-          end: '+=100%',
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-        }
-      })
-      .to(heroOverlayRef.current, { opacity: 0, y: -40, duration: 0.5 })
-      .to(heroImageContainerRef.current, {
-        scale: 1.12,
-        borderRadius: '0px',
-        width: '100vw',
-        height: '100vh',
-        duration: 1,
-      }, 0)
-      .to(splitPanelRef.current, {
-        y: '100%',
-        opacity: 0,
-        duration: 0.8,
-      }, 0)
+      // Section 01 Hero Cinematic Unpin & Zoom (Desktop only)
+      if (window.innerWidth >= 1024) {
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: heroContainerRef.current,
+            start: 'top top',
+            end: '+=100%',
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+          }
+        })
+        .to(heroOverlayRef.current, { opacity: 0, y: -40, duration: 0.5 })
+        .to(heroImageContainerRef.current, {
+          scale: 1.12,
+          borderRadius: '0px',
+          width: '100vw',
+          height: '100vh',
+          duration: 1,
+        }, 0)
+        .to(splitPanelRef.current, {
+          y: '100%',
+          opacity: 0,
+          duration: 0.8,
+        }, 0)
+      }
 
       // Section 03 Cinematic Transition Viewport Zoom
       gsap.timeline({
@@ -272,7 +274,7 @@ export const Home: React.FC = () => {
       {/* SECTION 01 — CINEMATIC HERO */}
       <div 
         ref={heroContainerRef} 
-        className="relative w-full h-screen overflow-hidden flex items-center justify-center bg-brand-dark"
+        className="relative w-full min-h-screen lg:h-screen lg:overflow-hidden bg-brand-dark"
       >
         {/* Cinematic Image Container (Visible in the top viewport section on desktop) */}
         <div 
@@ -375,18 +377,18 @@ export const Home: React.FC = () => {
           ref={splitPanelRef}
           className={`relative lg:absolute bottom-0 left-0 w-full min-h-[35vh] lg:h-[260px] z-20 border-t ${darkMode ? 'border-white/5 bg-[#101110]' : 'border-brand-stone/10 bg-brand-dark'} flex flex-col justify-end transition-colors duration-1000`}
         >
-          <div className="w-full grid grid-cols-1 lg:grid-cols-12 relative h-full">
+          <div className="w-full grid grid-cols-1 lg:grid-cols-12 relative h-auto lg:h-full">
             {/* Left blueprint panel */}
-            <div className={`lg:col-span-5 p-6 flex flex-col justify-center h-full transition-colors duration-1000 ${darkMode ? 'bg-[#f5f5f7]' : 'bg-black'}`}>
+            <div className={`lg:col-span-5 p-4 sm:p-6 flex flex-col justify-center h-auto lg:h-full transition-colors duration-1000 ${darkMode ? 'bg-[#f5f5f7]' : 'bg-black'}`}>
               <div className="h-[140px] flex items-center justify-center bg-transparent p-2">
                 <FloorPlan darkMode={!darkMode} variant={houses[currentHouseIndex].floorPlanVariant} />
               </div>
             </div>
 
             {/* Right statistics matrix */}
-            <div className={`lg:col-span-7 p-6 md:p-8 flex flex-col justify-between h-full transition-colors duration-1000 ${darkMode ? 'bg-[#101110] text-brand-light' : 'bg-[#f5f5f7] text-brand-dark'}`}>
+            <div className={`lg:col-span-7 p-4 sm:p-6 md:p-8 flex flex-col justify-between h-auto lg:h-full transition-colors duration-1000 ${darkMode ? 'bg-[#101110] text-brand-light' : 'bg-[#f5f5f7] text-brand-dark'}`}>
               {/* Stats matrix columns */}
-              <div className="grid grid-cols-3 gap-4 md:gap-6">
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
                 <div className="text-left">
                   <span className={`flex items-center gap-1 text-[9px] md:text-[11px] uppercase tracking-[1.5px] font-bold mb-1 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                     <Key size={10} className={darkMode ? 'text-gray-500' : 'text-gray-400'} />

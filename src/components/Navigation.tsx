@@ -46,7 +46,7 @@ export const Navigation: React.FC = () => {
         </div>
 
         {/* Center: Floating Capsule menu links (hidden on mobile) */}
-        <div className="hidden lg:flex pointer-events-auto bg-black/35 border border-white/10 px-6 py-2.5 rounded-full backdrop-blur-md items-center gap-6 text-[10px] uppercase tracking-[2px] font-bold text-brand-light">
+        <div className="hidden xl:flex pointer-events-auto bg-black/35 border border-white/10 px-6 py-2.5 rounded-full backdrop-blur-md items-center gap-6 text-[10px] uppercase tracking-[2px] font-bold text-brand-light">
           <Link to="/" className="hover:text-brand-bronze transition-colors">Browse Properties</Link>
           <Link to="/about.html" className="hover:text-brand-bronze transition-colors">Our Story</Link>
           <Link to="/contact.html" className="hover:text-brand-bronze transition-colors">Contact</Link>
@@ -77,7 +77,7 @@ export const Navigation: React.FC = () => {
 
       {/* Fullscreen Overlay Menu */}
       {isOpen && (
-        <div className="fixed inset-0 w-full h-full bg-[#101110]/98 backdrop-blur-2xl z-[200] flex flex-col justify-between p-8 md:p-16 overflow-y-auto animate-fade-in relative">
+        <div className="fixed inset-0 w-full h-full bg-[#101110]/98 backdrop-blur-2xl z-[200] flex flex-col justify-between p-8 md:p-16 overflow-y-auto animate-fade-in">
           {/* Subtle gold decoration glow */}
           <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-brand-bronze/10 rounded-full blur-[150px] pointer-events-none" />
           
