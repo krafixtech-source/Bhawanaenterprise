@@ -77,7 +77,7 @@ export const Navigation: React.FC = () => {
 
       {/* Fullscreen Overlay Menu */}
       {isOpen && (
-        <div className="fixed inset-0 w-full h-full bg-[#101110]/98 backdrop-blur-2xl z-[200] flex flex-col justify-between p-8 md:p-16 overflow-y-auto animate-fade-in">
+        <div data-lenis-prevent className="fixed inset-0 w-full h-full bg-[#101110]/98 backdrop-blur-2xl z-[200] flex flex-col justify-start md:justify-between p-6 md:p-16 overflow-y-auto animate-fade-in">
           {/* Subtle gold decoration glow */}
           <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-brand-bronze/10 rounded-full blur-[150px] pointer-events-none" />
           
@@ -105,9 +105,9 @@ export const Navigation: React.FC = () => {
           </div>
 
           {/* Menu Items Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 my-auto py-12 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 mt-8 mb-12 md:my-auto py-6 md:py-12 relative z-10">
             {/* Left Column: Main Links (numbered luxury listing) */}
-            <div className="md:col-span-7 flex flex-col gap-4 md:gap-6 items-start justify-center">
+            <div className="md:col-span-7 flex flex-col gap-3 md:gap-6 items-start justify-center">
               {[
                 { name: 'Home', path: '/' },
                 { name: 'Our Story', path: '/about.html' },
@@ -122,7 +122,7 @@ export const Navigation: React.FC = () => {
                     <div key={idx} className="w-full">
                       <button
                         onClick={() => setServicesOpen(!servicesOpen)}
-                        className="group flex items-baseline text-left font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white hover:text-brand-bronze transition-all duration-300 transform hover:translate-x-3 cursor-none"
+                        className="group flex items-baseline text-left font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white hover:text-brand-bronze transition-all duration-300 transform hover:translate-x-3 cursor-none"
                         data-cursor="SELECT"
                       >
                         <span className="font-mono text-xs md:text-sm text-brand-bronze/70 mr-4 tracking-widest group-hover:text-white transition-colors">{num} //</span>
@@ -161,7 +161,7 @@ export const Navigation: React.FC = () => {
                   <button
                     key={idx}
                     onClick={() => handleLinkClick(link.path!)}
-                    className="group flex items-baseline text-left font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white hover:text-brand-bronze transition-all duration-300 transform hover:translate-x-3 cursor-none"
+                    className="group flex items-baseline text-left font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl text-white hover:text-brand-bronze transition-all duration-300 transform hover:translate-x-3 cursor-none"
                     data-cursor="SELECT"
                   >
                     <span className="font-mono text-xs md:text-sm text-brand-bronze/70 mr-4 tracking-widest group-hover:text-white transition-colors">{num} //</span>
@@ -172,7 +172,7 @@ export const Navigation: React.FC = () => {
             </div>
 
             {/* Right Column: Contact Details & Visual Info */}
-            <div className="md:col-span-5 flex flex-col justify-center gap-10 border-t md:border-t-0 md:border-l border-white/10 pt-12 md:pt-0 md:pl-16">
+            <div className="md:col-span-5 flex flex-col justify-center gap-6 md:gap-10 border-t md:border-t-0 md:border-l border-white/10 pt-8 md:pt-0 md:pl-16">
               <div className="group">
                 <h4 className="text-[10px] tracking-[4px] uppercase text-brand-bronze font-bold mb-3 flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand-bronze animate-pulse"></span>
