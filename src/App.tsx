@@ -74,6 +74,15 @@ const AppContent: React.FC = () => {
     }
   }, [])
 
+  // Initialize light/dark mode theme on mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.documentElement.classList.add('light-mode');
+    } else {
+      document.documentElement.classList.remove('light-mode');
+    }
+  }, []);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden selection:bg-luxury-gold selection:text-black">

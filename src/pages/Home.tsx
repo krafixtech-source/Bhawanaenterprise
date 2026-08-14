@@ -9,10 +9,28 @@ gsap.registerPlugin(ScrollTrigger)
 
 export const Home: React.FC = () => {
   const [darkMode, setDarkMode] = useState(true)
+  
+  useEffect(() => {
+    const isLight = document.documentElement.classList.contains('light-mode');
+    setDarkMode(!isLight);
+  }, []);
+
+  const handleThemeToggle = (isDark: boolean) => {
+    setDarkMode(isDark);
+    if (isDark) {
+      document.documentElement.classList.remove('light-mode');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.add('light-mode');
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
   const [hoveredService, setHoveredService] = useState<number | null>(null)
   const [hoveredBuilder, setHoveredBuilder] = useState<number | null>(null)
   const [currentHouseIndex, setCurrentHouseIndex] = useState(0)
+
 
   const houses = [
     {
@@ -352,7 +370,7 @@ export const Home: React.FC = () => {
               {/* SECTION 02 — DAY / NIGHT EXPERIENTIAL SWITCH (bottom-right) */}
               <div className="pointer-events-auto flex items-center bg-black/45 border border-white/10 p-1.5 rounded-full backdrop-blur-md gap-1">
                 <button
-                  onClick={() => setDarkMode(true)}
+                  onClick={() => handleThemeToggle(true)}
                   className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${darkMode ? 'bg-white text-black' : 'text-white hover:bg-white/10'}`}
                   title="Night Mode"
                   data-cursor="TOGGLE"
@@ -360,7 +378,7 @@ export const Home: React.FC = () => {
                   <Moon size={14} />
                 </button>
                 <button
-                  onClick={() => setDarkMode(false)}
+                  onClick={() => handleThemeToggle(false)}
                   className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${!darkMode ? 'bg-white text-black' : 'text-white hover:bg-white/10'}`}
                   title="Day Mode"
                   data-cursor="TOGGLE"

@@ -1,12 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Menu, X, ChevronDown, Calendar } from 'lucide-react'
 
 export const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
-
   const [servicesOpen, setServicesOpen] = useState(false)
+  const [logoSrc, setLogoSrc] = useState('/logo-light.png')
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const checkTheme = () => {
+      if (document.documentElement.classList.contains('light-mode')) {
+        setLogoSrc('/logo.png');
+      } else {
+        setLogoSrc('/logo-light.png');
+      }
+    };
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
 
   const services = [
     { name: 'Property Sell', path: '/sell.html' },
@@ -38,7 +52,7 @@ export const Navigation: React.FC = () => {
             className="flex items-center"
           >
             <img 
-              src="/logo-light.png" 
+              src={logoSrc} 
               alt="Bhawana Enterprises Logo" 
               className="h-7 sm:h-8 md:h-9 w-auto object-contain hover:opacity-80 transition-opacity" 
             />
@@ -89,7 +103,7 @@ export const Navigation: React.FC = () => {
               className="flex items-center"
             >
               <img 
-                src="/logo-light.png" 
+                src={logoSrc} 
                 alt="Bhawana Enterprises Logo" 
                 className="h-8 md:h-10 w-auto object-contain hover:opacity-80 transition-opacity" 
               />

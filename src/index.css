@@ -1,18 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 @import "tailwindcss";
 
+:root {
+  --bg-primary: #101110;
+  --bg-secondary: #171917;
+  --text-primary: #F1EEE7;
+  --text-muted: #C8C2B7;
+  --text-white: #FFFFFF;
+}
+
+:root.light-mode {
+  --bg-primary: #F1EEE7;
+  --bg-secondary: #FFFFFF;
+  --text-primary: #101110;
+  --text-muted: #57534E;
+  --text-white: #101110;
+}
+
 @theme {
   --font-serif: "Playfair Display", serif;
   --font-sans: "Plus Jakarta Sans", sans-serif;
   --font-display: "Bebas Neue", sans-serif;
   
-  /* Brand Visual DNA Colors */
-  --color-brand-dark: #101110;
-  --color-brand-charcoal: #171917;
-  --color-brand-light: #F1EEE7;
-  --color-brand-stone: #C8C2B7;
+  /* Brand Visual DNA Colors - Mapped to CSS variables for global Day/Night theme toggling */
+  --color-brand-dark: var(--bg-primary);
+  --color-brand-charcoal: var(--bg-secondary);
+  --color-brand-light: var(--text-primary);
+  --color-brand-stone: var(--text-muted);
+  --color-brand-white: var(--text-white);
   --color-brand-bronze: #B18A57;
-  --color-brand-white: #FFFFFF;
+  
+  --color-luxury-dark: var(--bg-primary);
+  --color-white: var(--text-white);
 }
 
 /* Custom Scrollbar */
@@ -21,26 +40,28 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #101110;
+  background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: #171917;
-  border: 1px solid #c8c2b730;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(200, 194, 183, 0.15);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #b18a57;
+  background: #B18A57;
 }
 
 /* Global Styles */
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #101110;
+  background-color: var(--bg-primary);
   font-family: var(--font-sans);
-  color: #F1EEE7;
+  color: var(--text-primary);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 800ms cubic-bezier(0.25, 1, 0.5, 1),
+              color 800ms cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* Custom Trailing Cursor */

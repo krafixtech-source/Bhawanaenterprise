@@ -1,10 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('')
+  const [logoSrc, setLogoSrc] = useState('/logo-light.png')
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const checkTheme = () => {
+      if (document.documentElement.classList.contains('light-mode')) {
+        setLogoSrc('/logo.png');
+      } else {
+        setLogoSrc('/logo-light.png');
+      }
+    };
+    checkTheme();
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault()
@@ -19,7 +34,7 @@ export const Footer: React.FC = () => {
   }
 
   return (
-    <footer className="bg-luxury-dark text-white border-t border-white/5 pt-20 pb-8 px-6 md:px-12 relative overflow-hidden font-sans">
+    <footer className="bg-brand-dark text-brand-light border-t border-white/5 pt-20 pb-8 px-6 md:px-12 relative overflow-hidden font-sans transition-colors duration-1000">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 pb-16">
           {/* Brand Info & Newsletter */}
@@ -27,7 +42,7 @@ export const Footer: React.FC = () => {
             <div>
               <Link to="/" onClick={handleLinkClick} className="block mb-6">
                 <img 
-                  src="/logo-light.png" 
+                  src={logoSrc} 
                   alt="Bhawana Enterprises Logo" 
                   className="h-10 md:h-12 w-auto object-contain hover:opacity-80 transition-opacity" 
                 />
