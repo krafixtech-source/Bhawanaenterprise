@@ -11,7 +11,7 @@ export const JointVenture: React.FC = () => {
           <h1 className="text-4xl md:text-6xl font-serif leading-tight font-medium tracking-wide">
             Joint Venture
           </h1>
-          <p className="text-gray-400 text-sm mt-4 max-w-xl mx-auto leading-relaxed">
+          <p className="text-brand-stone text-sm mt-4 max-w-xl mx-auto leading-relaxed">
             Strategic partnerships between landowners and premium builders in Jaipur to realize maximum property value.
           </p>
         </div>
@@ -38,7 +38,7 @@ export const JointVenture: React.FC = () => {
               ].map((bullet, idx) => (
                 <div key={idx} className="flex gap-3">
                   <CheckCircle2 size={16} className="text-luxury-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-xs text-gray-300 leading-relaxed">{bullet}</span>
+                  <span className="text-xs text-brand-light leading-relaxed">{bullet}</span>
                 </div>
               ))}
             </div>
@@ -48,7 +48,7 @@ export const JointVenture: React.FC = () => {
         <div className="text-center pt-8">
           <Link
             to="/contact.html"
-            className="inline-flex items-center gap-3 bg-white text-black hover:bg-luxury-gold hover:text-white px-8 py-3.5 rounded-full transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold"
+            className="inline-flex items-center gap-3 bg-white text-black hover:bg-luxury-gold hover:text-brand-light px-8 py-3.5 rounded-full transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold"
             data-cursor="CONTACT"
           >
             Propose a Joint Venture

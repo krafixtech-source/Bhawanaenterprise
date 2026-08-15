@@ -53,7 +53,7 @@ export const Career: React.FC = () => {
           <h1 className="text-4xl md:text-6xl font-serif leading-tight font-medium tracking-wide">
             Careers
           </h1>
-          <p className="text-gray-400 text-sm mt-4">
+          <p className="text-brand-stone text-sm mt-4">
             Join Jaipur's elite real estate consultancy network
           </p>
         </div>
@@ -68,13 +68,13 @@ export const Career: React.FC = () => {
                 <div className="flex flex-wrap justify-between items-start gap-4 mb-4">
                   <div>
                     <h3 className="font-serif text-lg font-bold text-white">{job.title}</h3>
-                    <span className="text-[10px] tracking-wider text-gray-500 uppercase block mt-1">{job.department}</span>
+                    <span className="text-[10px] tracking-wider text-brand-stone uppercase block mt-1">{job.department}</span>
                   </div>
                   <div className="flex gap-2">
                     <span className="text-[9px] bg-white/10 text-white rounded px-2.5 py-1 font-mono uppercase tracking-widest">{job.type}</span>
                   </div>
                 </div>
-                <p className="text-xs text-gray-400 leading-relaxed mb-4">{job.desc}</p>
+                <p className="text-xs text-brand-stone leading-relaxed mb-4">{job.desc}</p>
                 <div className="flex items-center gap-1.5 text-xs text-luxury-gold font-semibold">
                   <MapPin size={12} />
                   <span>{job.location}</span>
@@ -87,11 +87,11 @@ export const Career: React.FC = () => {
           <div className="lg:col-span-5">
             <div className="bg-white/5 border border-white/10 rounded-3xl p-8 sticky top-32">
               <h3 className="font-serif text-xl font-bold mb-2">Apply Directly</h3>
-              <p className="text-xs text-gray-400 mb-6">Complete the information below and our legal/recruitment advisor will call you within 24 hours.</p>
+              <p className="text-xs text-brand-stone mb-6">Complete the information below and our legal/recruitment advisor will call you within 24 hours.</p>
               
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div>
-                  <label className="block text-[10px] uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Full Name</label>
+                  <label className="block text-[10px] uppercase tracking-wider text-brand-stone mb-1.5 font-bold">Full Name</label>
                   <input
                     type="text"
                     required
@@ -102,7 +102,7 @@ export const Career: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Email Address</label>
+                  <label className="block text-[10px] uppercase tracking-wider text-brand-stone mb-1.5 font-bold">Email Address</label>
                   <input
                     type="email"
                     required
@@ -113,7 +113,7 @@ export const Career: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Phone Number</label>
+                  <label className="block text-[10px] uppercase tracking-wider text-brand-stone mb-1.5 font-bold">Phone Number</label>
                   <input
                     type="tel"
                     required
@@ -124,7 +124,7 @@ export const Career: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Target Position</label>
+                  <label className="block text-[10px] uppercase tracking-wider text-brand-stone mb-1.5 font-bold">Target Position</label>
                   <select
                     value={formData.role}
                     onChange={(e) => setFormData({ ...formData, role: e.target.value })}
@@ -137,7 +137,7 @@ export const Career: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Cover Letter Summary</label>
+                  <label className="block text-[10px] uppercase tracking-wider text-brand-stone mb-1.5 font-bold">Cover Letter Summary</label>
                   <textarea
                     rows={4}
                     value={formData.cover}
@@ -149,7 +149,7 @@ export const Career: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-white text-black hover:bg-luxury-gold hover:text-white py-3 rounded-xl transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold mt-4 flex items-center justify-center gap-2"
+                  className="w-full bg-white text-black hover:bg-luxury-gold hover:text-brand-light py-3 rounded-xl transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold mt-4 flex items-center justify-center gap-2"
                   data-cursor="SUBMIT"
                 >
                   <Send size={12} />

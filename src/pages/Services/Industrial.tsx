@@ -11,7 +11,7 @@ export const Industrial: React.FC = () => {
           <h1 className="text-4xl md:text-6xl font-serif leading-tight font-medium tracking-wide">
             Industrial Land & Warehouses
           </h1>
-          <p className="text-gray-400 text-sm mt-4 max-w-xl mx-auto leading-relaxed">
+          <p className="text-brand-stone text-sm mt-4 max-w-xl mx-auto leading-relaxed">
             Acquire strategically located industrial plots, manufacturing plants, and warehousing facilities.
           </p>
         </div>
@@ -38,7 +38,7 @@ export const Industrial: React.FC = () => {
               ].map((bullet, idx) => (
                 <div key={idx} className="flex gap-3">
                   <CheckCircle2 size={16} className="text-luxury-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-xs text-gray-300 leading-relaxed">{bullet}</span>
+                  <span className="text-xs text-brand-light leading-relaxed">{bullet}</span>
                 </div>
               ))}
             </div>
@@ -48,7 +48,7 @@ export const Industrial: React.FC = () => {
         <div className="text-center pt-8">
           <Link
             to="/contact.html"
-            className="inline-flex items-center gap-3 bg-white text-black hover:bg-luxury-gold hover:text-white px-8 py-3.5 rounded-full transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold"
+            className="inline-flex items-center gap-3 bg-white text-black hover:bg-luxury-gold hover:text-brand-light px-8 py-3.5 rounded-full transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold"
             data-cursor="CONTACT"
           >
             Find Industrial Deals

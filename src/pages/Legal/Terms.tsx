@@ -7,7 +7,7 @@ export const Terms: React.FC = () => {
         <span className="text-[9px] tracking-[4px] text-luxury-gold font-bold uppercase block mb-3">LEGAL PROTOCOLS</span>
         <h1 className="font-serif text-3xl md:text-5xl font-bold mb-8">Terms & Conditions</h1>
         
-        <div className="flex flex-col gap-6 text-xs text-gray-300 leading-relaxed">
+        <div className="flex flex-col gap-6 text-xs text-brand-light leading-relaxed">
           <p>Last updated: August 12, 2026</p>
           
           <h2 className="font-serif text-lg font-bold text-white mt-4">1. Scope of Service</h2>

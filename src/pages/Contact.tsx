@@ -29,7 +29,7 @@ export const Contact: React.FC = () => {
           <h1 className="text-4xl md:text-6xl font-serif leading-tight font-medium tracking-wide">
             Contact Us
           </h1>
-          <p className="text-gray-400 text-sm mt-4">
+          <p className="text-brand-stone text-sm mt-4">
             Consult Jaipur's trusted real estate advisors
           </p>
         </div>
@@ -45,7 +45,7 @@ export const Contact: React.FC = () => {
                 <MapPin className="text-luxury-gold flex-shrink-0" size={24} />
                 <div>
                   <h4 className="text-xs uppercase font-bold tracking-wider mb-1">Corporate Address</h4>
-                  <p className="text-xs text-gray-400 leading-relaxed">
+                  <p className="text-xs text-brand-stone leading-relaxed">
                     REALTY CHAMBER (BHAWANA ENTERPRISES),<br />
                     Malviya Nagar, Jaipur, Rajasthan 302017
                   </p>
@@ -60,7 +60,7 @@ export const Contact: React.FC = () => {
                   <a href="tel:+917599912345" className="text-sm font-serif text-white hover:text-luxury-gold transition-colors block mb-1">
                     +91 75999 12345
                   </a>
-                  <p className="text-[10px] text-gray-500 font-mono">Mobile / WhatsApp Available</p>
+                  <p className="text-[10px] text-brand-stone font-mono">Mobile / WhatsApp Available</p>
                 </div>
               </div>
 
@@ -69,10 +69,10 @@ export const Contact: React.FC = () => {
                 <Mail className="text-luxury-gold flex-shrink-0" size={24} />
                 <div>
                   <h4 className="text-xs uppercase font-bold tracking-wider mb-1">Electronic Support</h4>
-                  <a href="mailto:sales@bhawanaenterprises.com" className="text-xs text-gray-400 hover:text-white transition-colors block mb-1">
+                  <a href="mailto:sales@bhawanaenterprises.com" className="text-xs text-brand-stone hover:text-brand-light transition-colors block mb-1">
                     sales@bhawanaenterprises.com
                   </a>
-                  <a href="mailto:info@msmcoretech.com" className="text-xs text-gray-500 hover:text-white transition-colors block">
+                  <a href="mailto:info@msmcoretech.com" className="text-xs text-brand-stone hover:text-brand-light transition-colors block">
                     info@msmcoretech.com
                   </a>
                 </div>
@@ -83,7 +83,7 @@ export const Contact: React.FC = () => {
                 <Clock className="text-luxury-gold flex-shrink-0" size={24} />
                 <div>
                   <h4 className="text-xs uppercase font-bold tracking-wider mb-1">Consultancy Hours</h4>
-                  <p className="text-xs text-gray-400 leading-relaxed">
+                  <p className="text-xs text-brand-stone leading-relaxed">
                     Monday – Sunday: 8:00 AM – 8:00 PM<br />
                     <span className="text-[10px] text-luxury-gold font-bold uppercase tracking-widest mt-1 block">Registry Desk Open All Week</span>
                   </p>
@@ -96,11 +96,11 @@ export const Contact: React.FC = () => {
           <div className="lg:col-span-7">
             <div className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-10">
               <h3 className="font-serif text-2xl font-bold mb-2">Schedule a Consultation</h3>
-              <p className="text-xs text-gray-400 mb-8">Please detail your property type, budget, and location preference. Our registry advisors will prepare relevant listings prior to call.</p>
+              <p className="text-xs text-brand-stone mb-8">Please detail your property type, budget, and location preference. Our registry advisors will prepare relevant listings prior to call.</p>
               
               <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-[10px] uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Your Name</label>
+                  <label className="block text-[10px] uppercase tracking-wider text-brand-stone mb-1.5 font-bold">Your Name</label>
                   <input
                     type="text"
                     required
@@ -111,7 +111,7 @@ export const Contact: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Phone Number</label>
+                  <label className="block text-[10px] uppercase tracking-wider text-brand-stone mb-1.5 font-bold">Phone Number</label>
                   <input
                     type="tel"
                     required
@@ -122,7 +122,7 @@ export const Contact: React.FC = () => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block text-[10px] uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Email Address</label>
+                  <label className="block text-[10px] uppercase tracking-wider text-brand-stone mb-1.5 font-bold">Email Address</label>
                   <input
                     type="email"
                     required
@@ -133,7 +133,7 @@ export const Contact: React.FC = () => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block text-[10px] uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Consultation Subject</label>
+                  <label className="block text-[10px] uppercase tracking-wider text-brand-stone mb-1.5 font-bold">Consultation Subject</label>
                   <select
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -148,7 +148,7 @@ export const Contact: React.FC = () => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block text-[10px] uppercase tracking-wider text-gray-400 mb-1.5 font-bold">Message Details</label>
+                  <label className="block text-[10px] uppercase tracking-wider text-brand-stone mb-1.5 font-bold">Message Details</label>
                   <textarea
                     rows={5}
                     required
@@ -161,7 +161,7 @@ export const Contact: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="sm:col-span-2 w-full bg-white text-black hover:bg-luxury-gold hover:text-white py-3.5 rounded-xl transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold flex items-center justify-center gap-2"
+                  className="sm:col-span-2 w-full bg-white text-black hover:bg-luxury-gold hover:text-brand-light py-3.5 rounded-xl transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold flex items-center justify-center gap-2"
                   data-cursor="SUBMIT"
                 >
                   <Send size={12} />

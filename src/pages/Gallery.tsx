@@ -60,7 +60,7 @@ export const Gallery: React.FC = () => {
           <h1 className="text-4xl md:text-6xl font-serif leading-tight font-medium tracking-wide">
             Property Gallery
           </h1>
-          <p className="text-gray-400 text-sm mt-4">
+          <p className="text-brand-stone text-sm mt-4">
             Curated architectural renderings and strategic site images
           </p>
         </div>
@@ -112,7 +112,7 @@ export const Gallery: React.FC = () => {
                   {item.category}
                 </span>
                 <h3 className="font-serif text-lg font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-xs text-gray-400 font-sans leading-relaxed">{item.desc}</p>
+                <p className="text-xs text-brand-stone font-sans leading-relaxed">{item.desc}</p>
               </div>
             </div>
           ))}
@@ -123,7 +123,7 @@ export const Gallery: React.FC = () => {
           <div className="fixed inset-0 bg-black/95 z-[300] flex items-center justify-center p-4">
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-6 right-6 text-gray-400 hover:text-white flex items-center gap-2 text-xs uppercase tracking-widest font-bold"
+              className="absolute top-6 right-6 text-brand-stone hover:text-brand-light flex items-center gap-2 text-xs uppercase tracking-widest font-bold"
               data-cursor="CLOSE"
             >
               <X size={20} />

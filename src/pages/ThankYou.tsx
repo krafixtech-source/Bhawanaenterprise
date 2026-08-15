@@ -13,13 +13,13 @@ export const ThankYou: React.FC = () => {
         </div>
 
         <h1 className="font-serif text-3xl md:text-4xl font-bold mb-4">Thank You</h1>
-        <p className="text-sm text-gray-400 mb-8 leading-relaxed">
+        <p className="text-sm text-brand-stone mb-8 leading-relaxed">
           Your inquiry has been successfully received by our registry and sales desk. A senior property consultant or legal advisor will contact you within the next 24 business hours.
         </p>
 
         <Link
           to="/"
-          className="inline-flex items-center justify-center gap-2 w-full bg-white text-black hover:bg-luxury-gold hover:text-white py-3.5 rounded-xl transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold"
+          className="inline-flex items-center justify-center gap-2 w-full bg-white text-black hover:bg-luxury-gold hover:text-brand-light py-3.5 rounded-xl transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold"
           data-cursor="HOME"
         >
           <span>Return to Homepage</span>

@@ -408,8 +408,8 @@ export const Home: React.FC = () => {
               {/* Stats matrix columns */}
               <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
                 <div className="text-left">
-                  <span className={`flex items-center gap-1 text-[9px] md:text-[11px] uppercase tracking-[1.5px] font-bold mb-1 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                    <Key size={10} className={darkMode ? 'text-gray-500' : 'text-gray-400'} />
+                  <span className={`flex items-center gap-1 text-[9px] md:text-[11px] uppercase tracking-[1.5px] font-bold mb-1 ${darkMode ? 'text-brand-stone' : 'text-brand-stone'}`}>
+                    <Key size={10} className={darkMode ? 'text-brand-stone' : 'text-brand-stone'} />
                     Completion:
                   </span>
                   <span className={`font-display text-2xl md:text-3xl lg:text-4xl tracking-wide font-extrabold uppercase block ${darkMode ? 'text-white' : 'text-black'}`}>
@@ -418,8 +418,8 @@ export const Home: React.FC = () => {
                 </div>
                 
                 <div className="text-left">
-                  <span className={`flex items-center gap-1 text-[9px] md:text-[11px] uppercase tracking-[1.5px] font-bold mb-1 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                    <MapPin size={10} className={darkMode ? 'text-gray-500' : 'text-gray-400'} />
+                  <span className={`flex items-center gap-1 text-[9px] md:text-[11px] uppercase tracking-[1.5px] font-bold mb-1 ${darkMode ? 'text-brand-stone' : 'text-brand-stone'}`}>
+                    <MapPin size={10} className={darkMode ? 'text-brand-stone' : 'text-brand-stone'} />
                     Plot Size:
                   </span>
                   <span className={`font-display text-2xl md:text-3xl lg:text-4xl tracking-wide font-extrabold uppercase block ${darkMode ? 'text-white' : 'text-black'}`}>
@@ -428,8 +428,8 @@ export const Home: React.FC = () => {
                 </div>
 
                 <div className="text-left">
-                  <span className={`flex items-center gap-1 text-[9px] md:text-[11px] uppercase tracking-[1.5px] font-bold mb-1 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                    <HomeIcon size={10} className={darkMode ? 'text-gray-500' : 'text-gray-400'} />
+                  <span className={`flex items-center gap-1 text-[9px] md:text-[11px] uppercase tracking-[1.5px] font-bold mb-1 ${darkMode ? 'text-brand-stone' : 'text-brand-stone'}`}>
+                    <HomeIcon size={10} className={darkMode ? 'text-brand-stone' : 'text-brand-stone'} />
                     House Area:
                   </span>
                   <span className={`font-display text-2xl md:text-3xl lg:text-4xl tracking-wide font-extrabold uppercase block ${darkMode ? 'text-white' : 'text-black'}`}>
@@ -444,7 +444,7 @@ export const Home: React.FC = () => {
                 <div className="flex gap-3 items-center">
                   <button 
                     onClick={handlePrevHouse}
-                    className={`w-12 h-12 rounded-full border flex items-center justify-center transition-all text-sm ${darkMode ? 'border-white/10 text-white hover:bg-white hover:text-black hover:border-white' : 'border-black/10 text-black hover:bg-black hover:text-white hover:border-black'}`}
+                    className={`w-12 h-12 rounded-full border flex items-center justify-center transition-all text-sm ${darkMode ? 'border-white/10 text-white hover:bg-white hover:text-black hover:border-white' : 'border-black/10 text-black hover:bg-black hover:text-[#F1EEE7] hover:border-black'}`}
                     title="Previous House Type"
                     data-cursor="PREV"
                   >
@@ -452,7 +452,7 @@ export const Home: React.FC = () => {
                   </button>
                   <button 
                     onClick={handleNextHouse}
-                    className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all text-sm font-bold ${darkMode ? 'border-[#0a84ff] text-[#0a84ff] hover:bg-[#0a84ff] hover:text-white' : 'border-[#0066cc] text-[#0066cc] hover:bg-[#0066cc] hover:text-white'}`}
+                    className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all text-sm font-bold ${darkMode ? 'border-[#0a84ff] text-[#0a84ff] hover:bg-[#0a84ff] hover:text-[#F1EEE7]' : 'border-[#0066cc] text-[#0066cc] hover:bg-[#0066cc] hover:text-[#F1EEE7]'}`}
                     title="Next House Type"
                     data-cursor="NEXT"
                   >
@@ -464,7 +464,7 @@ export const Home: React.FC = () => {
                 <div className="flex items-center gap-4 text-right">
                   <div>
                     <span className={`block text-[10px] uppercase tracking-[1.5px] font-bold ${darkMode ? 'text-white' : 'text-black'}`}>{houses[currentHouseIndex].name}</span>
-                    <span className={`text-[9px] uppercase tracking-widest font-mono mt-0.5 block ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>— {houses[currentHouseIndex].line}</span>
+                    <span className={`text-[9px] uppercase tracking-widest font-mono mt-0.5 block ${darkMode ? 'text-brand-stone' : 'text-brand-stone'}`}>— {houses[currentHouseIndex].line}</span>
                   </div>
                   
                   {/* Overlapping circular images - big size */}
@@ -965,22 +965,6 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 15 — 20+ YEARS / TRUST */}
-      <section className="py-24 px-6 md:px-12 bg-brand-dark relative z-40">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <span className="text-[10px] tracking-[4px] text-brand-stone font-bold uppercase block mb-3">TRUST INDEX</span>
-            <span className="block text-7xl font-serif font-extrabold text-brand-bronze mb-2">20+</span>
-            <h3 className="text-xs uppercase tracking-[4px] text-brand-white font-bold mb-6">YEARS OF REAL ESTATE EXCELLENCE</h3>
-            <p className="text-xs text-brand-stone leading-relaxed max-w-sm">
-              Established in 2006, Bhawana Enterprises continues to serve as Jaipur's private property registry and land coordination consultant.
-            </p>
-          </div>
-          <div className="rounded-3xl overflow-hidden aspect-video border border-brand-stone/10 shadow-2xl reveal-bottom-to-top">
-            <img src="/heritage-jaipur.png" alt="Jaipur real estate trust image" className="w-full h-full object-cover" />
-          </div>
-        </div>
-      </section>
 
       {/* SECTION 16 — TESTIMONIALS */}
       <section className="py-28 px-6 md:px-12 bg-brand-charcoal relative z-40 border-y border-brand-stone/5">

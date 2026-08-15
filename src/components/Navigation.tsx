@@ -44,33 +44,37 @@ export const Navigation: React.FC = () => {
     <>
       {/* Header Container */}
       <header className="fixed top-0 left-0 w-full z-[100] px-6 md:px-12 py-6 flex items-center justify-between pointer-events-none">
-        {/* Left: Brand logo */}
-        <div className="pointer-events-auto">
-          <Link
-            to="/"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center"
-          >
-            <img 
-              src={logoSrc} 
-              alt="Bhawana Enterprises Logo" 
-              className="h-7 sm:h-8 md:h-9 w-auto object-contain hover:opacity-80 transition-opacity" 
-            />
-          </Link>
+        {/* Left: Floating Capsule menu links (hidden on mobile) */}
+        <div className="flex-1 flex justify-start pointer-events-none">
+          <div className="hidden xl:flex pointer-events-auto bg-black/35 border border-white/10 px-6 py-2.5 rounded-full backdrop-blur-md items-center gap-6 text-[10px] uppercase tracking-[2px] font-bold text-brand-light">
+            <Link to="/" className="hover:text-brand-bronze transition-colors">Browse Properties</Link>
+            <Link to="/about.html" className="hover:text-brand-bronze transition-colors">Our Story</Link>
+            <Link to="/contact.html" className="hover:text-brand-bronze transition-colors">Contact</Link>
+          </div>
         </div>
 
-        {/* Center: Floating Capsule menu links (hidden on mobile) */}
-        <div className="hidden xl:flex pointer-events-auto bg-black/35 border border-white/10 px-6 py-2.5 rounded-full backdrop-blur-md items-center gap-6 text-[10px] uppercase tracking-[2px] font-bold text-brand-light">
-          <Link to="/" className="hover:text-brand-bronze transition-colors">Browse Properties</Link>
-          <Link to="/about.html" className="hover:text-brand-bronze transition-colors">Our Story</Link>
-          <Link to="/contact.html" className="hover:text-brand-bronze transition-colors">Contact</Link>
+        {/* Center: Brand logo */}
+        <div className="flex-shrink-0 flex justify-center pointer-events-none">
+          <div className="pointer-events-auto">
+            <Link
+              to="/"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center"
+            >
+              <img 
+                src={logoSrc} 
+                alt="Bhawana Enterprises Logo" 
+                className="h-7 sm:h-8 md:h-9 w-auto object-contain hover:opacity-80 transition-opacity" 
+              />
+            </Link>
+          </div>
         </div>
 
         {/* Right: Capsule Viewing Button & Menu Control */}
-        <div className="flex items-center gap-3 pointer-events-auto">
+        <div className="flex-1 flex justify-end items-center gap-3 pointer-events-none">
           <Link
             to="/contact.html"
-            className="bg-black/35 hover:bg-brand-light hover:text-brand-dark border border-white/10 px-5 py-2.5 rounded-full text-[10px] uppercase tracking-[2px] font-bold text-brand-light transition-all duration-300 backdrop-blur-md flex items-center gap-2"
+            className="bg-black/35 hover:bg-brand-light hover:text-brand-dark border border-white/10 px-5 py-2.5 rounded-full text-[10px] uppercase tracking-[2px] font-bold text-brand-light transition-all duration-300 backdrop-blur-md flex items-center gap-2 pointer-events-auto"
             data-cursor="BOOK"
           >
             <Calendar size={12} className="text-brand-bronze" />
@@ -79,7 +83,7 @@ export const Navigation: React.FC = () => {
           
           <button
             onClick={() => setIsOpen(true)}
-            className="bg-brand-white text-brand-dark hover:bg-brand-bronze hover:text-brand-light p-2.5 rounded-full transition-colors duration-300 shadow-lg flex items-center justify-center"
+            className="bg-brand-white text-brand-dark hover:bg-brand-bronze hover:text-brand-light p-2.5 rounded-full transition-colors duration-300 shadow-lg flex items-center justify-center pointer-events-auto"
             data-cursor="MENU"
           >
             <Menu size={14} />
