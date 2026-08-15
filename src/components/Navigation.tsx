@@ -47,7 +47,7 @@ export const Navigation: React.FC = () => {
         {/* Left: Floating Capsule menu links (hidden on mobile) */}
         <div className="flex-1 flex justify-start pointer-events-none">
           <div className="hidden xl:flex pointer-events-auto bg-black/35 border border-white/10 px-6 py-2.5 rounded-full backdrop-blur-md items-center gap-6 text-[10px] uppercase tracking-[2px] font-bold text-brand-light">
-            <Link to="/" className="hover:text-brand-bronze transition-colors">Browse Properties</Link>
+            <Link to="/" className="hover:text-brand-bronze transition-colors">Home</Link>
             <Link to="/about.html" className="hover:text-brand-bronze transition-colors">Our Story</Link>
             <Link to="/contact.html" className="hover:text-brand-bronze transition-colors">Contact</Link>
           </div>
