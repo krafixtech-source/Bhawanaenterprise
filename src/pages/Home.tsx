@@ -215,11 +215,11 @@ export const Home: React.FC = () => {
 
 
   const featuredProperties = [
-    { name: "SERENITY CONDO SUITE", type: "APARTMENT", specs: "4 BED · 4 BATH · 350 SQ FT", desc: "Jaipur upscale modern apartment flat concept.", img: '/hero-day.png', link: '/purchase.html' },
-    { name: "LUXURY GRAND HOTEL", type: "COMMERCIAL", specs: "40+ ROOMS · RESTAURANT", desc: "Premium commercial resort model in Jaipur.", img: '/hero-night.png', link: '/commercial-property.html' },
-    { name: "INDUSTRIAL WAREHOUSE", type: "INDUSTRIAL", specs: "LOADING DOCK · 5000 SQ FT", desc: "Logistic storage layout structure.", img: '/transition-aerial.png', link: '/industrial-property.html' },
-    { name: "PREMIUM AGRICULTURAL LAND", type: "AGRICULTURAL", specs: "FERTILE SOIL · 1 BIGHA+", desc: "Fertile agricultural fields in Rajasthan.", img: '/land-parcels.png', link: '/agricultural-property.html' },
-    { name: "LUXURY FARMHOUSE RETREAT", type: "RESIDENTIAL", specs: "3 BEDROOMS · GARDEN", desc: "Private green getaway property.", img: '/hero-day.png', link: '/purchase.html' }
+    { name: "SERENITY CONDO SUITE", type: "APARTMENT", specs: "4 BED · 4 BATH · 350 SQ FT", desc: "Jaipur upscale modern apartment flat concept.", img: '/gallery-condo.png', link: '/purchase.html' },
+    { name: "LUXURY GRAND HOTEL", type: "COMMERCIAL", specs: "40+ ROOMS · RESTAURANT", desc: "Premium commercial resort model in Jaipur.", img: '/gallery-hotel.png', link: '/commercial-property.html' },
+    { name: "INDUSTRIAL WAREHOUSE", type: "INDUSTRIAL", specs: "LOADING DOCK · 5000 SQ FT", desc: "Logistic storage layout structure.", img: '/gallery-warehouse.png', link: '/industrial-property.html' },
+    { name: "PREMIUM AGRICULTURAL LAND", type: "AGRICULTURAL", specs: "FERTILE SOIL · 1 BIGHA+", desc: "Fertile agricultural fields in Rajasthan.", img: '/gallery-agri.png', link: '/agricultural-property.html' },
+    { name: "LUXURY FARMHOUSE RETREAT", type: "RESIDENTIAL", specs: "3 BEDROOMS · GARDEN", desc: "Private green getaway property.", img: '/gallery-farmhouse.png', link: '/purchase.html' }
   ]
 
   const builders = [
@@ -551,7 +551,8 @@ export const Home: React.FC = () => {
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                 style={{ backgroundImage: `url(${panel.img})` }}
               />
-              <div className="absolute inset-0 bg-brand-dark/65 group-hover:bg-brand-dark/55 transition-colors duration-300" />
+              {/* Subtle bottom gradient overlay for text readability without darkening the main image */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none" />
 
               <div className="relative z-10">
                 <span className="text-[10px] tracking-[4px] font-bold text-brand-stone uppercase block mb-2">Direct Action</span>
@@ -598,16 +599,16 @@ export const Home: React.FC = () => {
             {featuredProperties.map((prop, idx) => (
               <div
                 key={idx}
-                className="snap-start flex-shrink-0 w-full sm:w-[450px] rounded-3xl border border-brand-stone/10 bg-brand-charcoal overflow-hidden flex flex-col justify-between h-[520px] transition-all duration-300 hover:border-brand-bronze reveal-bottom-to-top"
+                className="snap-start flex-shrink-0 w-full sm:w-[450px] rounded-3xl border border-brand-stone/10 bg-brand-charcoal overflow-hidden flex flex-col justify-between h-[570px] transition-all duration-300 hover:border-brand-bronze reveal-bottom-to-top"
               >
                 {/* Image & Blueprint Container */}
-                <div className="relative aspect-video overflow-hidden group">
+                <div className="relative h-[280px] sm:h-[300px] overflow-hidden group">
                   <img
                     src={prop.img}
                     alt={prop.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-brand-dark/40" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
                   
                   {/* Technical Blueprint Vector Line Art Overlay (Section 10) */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-opacity duration-500 bg-brand-dark/80 p-4 flex items-center justify-center">
@@ -624,7 +625,7 @@ export const Home: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="p-8 flex flex-col justify-between h-full">
+                <div className="p-8 flex flex-col justify-between flex-1">
                   <div>
                     <div className="flex justify-between items-start mb-4">
                       <span className="text-[9px] bg-brand-bronze/10 text-brand-bronze border border-brand-bronze/25 rounded px-2.5 py-1 uppercase tracking-widest font-bold font-mono">
@@ -654,7 +655,7 @@ export const Home: React.FC = () => {
           </div>
           
           <div className="text-right text-xs text-brand-stone font-mono mt-4">
-            01 / 05 • Scroll horizontally
+            {/* 01 / 05 • Scroll horizontally */}
           </div>
         </div>
       </section>

@@ -1,59 +1,143 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, Key, Search, ShieldCheck, ArrowRight, MessageSquare } from 'lucide-react'
 
 export const Purchase: React.FC = () => {
   return (
-    <div className="w-full min-h-screen bg-luxury-dark text-white pt-32 pb-24 px-6 md:px-12 font-sans relative z-40">
-      <div className="max-w-5xl mx-auto">
-        <div className="mb-16 text-center">
-          <span className="text-[10px] tracking-[4px] text-luxury-gold font-bold uppercase block mb-3">SERVICES</span>
-          <h1 className="text-4xl md:text-6xl font-serif leading-tight font-medium tracking-wide">
-            Property Purchase
+    <div className="w-full min-h-screen bg-brand-dark text-brand-light font-sans relative z-40">
+      
+      {/* Hero Banner Section */}
+      <div className="relative w-full h-[60vh] min-h-[450px] overflow-hidden flex items-center justify-center">
+        <img
+          src="/gallery-farmhouse.png"
+          alt="Jaipur Luxury Property Purchase & Villa Acquisition"
+          className="absolute inset-0 w-full h-full object-cover scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-brand-dark/40" />
+        
+        <div className="relative z-10 max-w-5xl mx-auto text-center px-6 pt-20">
+          <span className="text-[10px] tracking-[5px] text-brand-bronze font-bold uppercase block mb-3 font-mono">
+            CONSULTANCY CATEGORY 07
+          </span>
+          <h1 className="text-4xl md:text-6xl font-serif font-extrabold tracking-wide text-brand-white leading-tight mb-4">
+            Property Purchase & Private Acquisitions
           </h1>
-          <p className="text-brand-stone text-sm mt-4 max-w-xl mx-auto leading-relaxed">
-            Acquire pre-verified flats, luxury villas, and prime plots in Jaipur with absolute title security.
+          <p className="text-brand-stone text-xs md:text-sm max-w-2xl mx-auto leading-relaxed">
+            Acquire pre-verified flats, luxury villas, and prime plots across Jaipur with 100% title security and zero broker bloat.
           </p>
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
-          <div>
-            <h2 className="font-serif text-2xl md:text-3xl font-semibold mb-6 text-luxury-gold">Secure Strategic Acquisitions</h2>
-            <p className="text-sm leading-relaxed mb-6 opacity-80">
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        
+        {/* Metric Highlights Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24 border-y border-brand-stone/10 py-10">
+          <div className="text-center p-4">
+            <Key className="mx-auto text-brand-bronze mb-2" size={28} />
+            <span className="block font-serif text-2xl font-bold text-brand-white">Pre-Verified</span>
+            <span className="text-[9px] uppercase tracking-widest text-brand-stone font-mono">JDA & RERA Listings</span>
+          </div>
+          <div className="text-center p-4">
+            <Search className="mx-auto text-brand-bronze mb-2" size={28} />
+            <span className="block font-serif text-2xl font-bold text-brand-white">Private</span>
+            <span className="text-[9px] uppercase tracking-widest text-brand-stone font-mono">Site Walkthroughs</span>
+          </div>
+          <div className="text-center p-4">
+            <ShieldCheck className="mx-auto text-brand-bronze mb-2" size={28} />
+            <span className="block font-serif text-2xl font-bold text-brand-white">100%</span>
+            <span className="text-[9px] uppercase tracking-widest text-brand-stone font-mono">Title Deed Audit</span>
+          </div>
+          <div className="text-center p-4">
+            <CheckCircle2 className="mx-auto text-brand-bronze mb-2" size={28} />
+            <span className="block font-serif text-2xl font-bold text-brand-white">Direct</span>
+            <span className="text-[9px] uppercase tracking-widest text-brand-stone font-mono">Seller Negotiations</span>
+          </div>
+        </div>
+
+        {/* Feature Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
+          <div className="lg:col-span-6 flex flex-col gap-6">
+            <span className="text-[10px] tracking-[3px] text-brand-bronze font-bold uppercase font-mono">
+              SECURE STRATEGIC ACQUISITIONS
+            </span>
+            <h2 className="font-serif text-3xl md:text-4xl font-extrabold text-brand-white leading-snug">
+              Bespoke Property Search & Title-Safe Buying Protocol
+            </h2>
+            <p className="text-xs md:text-sm text-brand-stone leading-relaxed">
               Finding the right plot or apartment in Jaipur can be complex without verified listings. We filter properties by JDA approvals, RERA compliance, title safety, and clear zoning registries.
             </p>
-            <p className="text-sm leading-relaxed mb-6 opacity-80">
-              We guide you through property selection, private site walkthroughs, structural assessment coordination, registry files, and official deed transfers.
+            <p className="text-xs md:text-sm text-brand-stone leading-relaxed">
+              Our legal advisors guide buyers through property selection, private site walkthroughs, structural assessment coordination, registry file audit, and official deed transfers.
             </p>
+
+            <div className="flex gap-4 mt-2">
+              <a
+                href="https://wa.me/917599912345?text=Hello%20Bhawana%20Enterprises%2C%20I%20want%20to%20purchase%20a%20property%20or%20plot%20in%20Jaipur."
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-lg"
+              >
+                <MessageSquare size={16} /> WhatsApp Buyer Desk
+              </a>
+              <Link
+                to="/contact.html"
+                className="inline-flex items-center gap-2 border border-brand-stone/30 hover:border-brand-bronze text-brand-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all"
+              >
+                Find Property <ArrowRight size={14} />
+              </Link>
+            </div>
           </div>
 
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-8 shadow-xl">
-            <h3 className="font-serif text-lg font-bold text-luxury-gold mb-6 uppercase tracking-wider">Purchase Protocols</h3>
-            <div className="flex flex-col gap-4">
-              {[
-                "Target property matching based on budget & location profile",
-                "Full JDA/RERA compliance and history checks",
-                "Direct negotiation with sellers to prevent broker bloating",
-                "Complete registry and deed transfer legal management"
-              ].map((bullet, idx) => (
-                <div key={idx} className="flex gap-3">
-                  <CheckCircle2 size={16} className="text-luxury-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-xs text-brand-light leading-relaxed">{bullet}</span>
-                </div>
-              ))}
+          <div className="lg:col-span-6 relative">
+            <div className="rounded-3xl overflow-hidden border border-brand-stone/20 shadow-2xl relative aspect-[4/3]">
+              <img
+                src="/gallery-farmhouse.png"
+                alt="Jaipur Luxury Farmhouse Villa Estate"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-6 flex flex-col justify-end">
+                <span className="text-[9px] uppercase tracking-widest text-brand-bronze font-mono font-bold">Acquisition Showcase</span>
+                <span className="text-lg font-serif font-bold text-white">Jaipur Luxury Farmhouse Villa Retreat</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="text-center pt-8">
-          <Link
-            to="/contact.html"
-            className="inline-flex items-center gap-3 bg-white text-black hover:bg-luxury-gold hover:text-brand-light px-8 py-3.5 rounded-full transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold"
-            data-cursor="CONTACT"
-          >
-            Find a Property
-          </Link>
+        {/* Protocols Card Grid */}
+        <div className="bg-brand-charcoal rounded-3xl p-8 md:p-12 border border-brand-stone/10 mb-20">
+          <div className="text-center mb-12">
+            <span className="text-[10px] tracking-[4px] text-brand-bronze font-bold uppercase font-mono block mb-2">BUYING CHECKLIST</span>
+            <h3 className="font-serif text-2xl md:text-3xl font-bold text-brand-white">Purchase Protocols Matrix</h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                title: "Target Property Profile Matching",
+                desc: "Filtering pre-verified properties matching your exact location, budget, and architectural preferences."
+              },
+              {
+                title: "Full JDA & RERA Compliance Audit",
+                desc: "Vetting layout maps, conversion deeds, and title histories to ensure zero encumbrances."
+              },
+              {
+                title: "Direct Owner Price Negotiation",
+                desc: "Transparent deal structuring directly with verified seller principals to avoid inflated broker commissions."
+              },
+              {
+                title: "Registry & Deed Transfer Legal Support",
+                desc: "Handling sub-registrar appointments, stamp paper calculations, and official title transfers seamlessly."
+              }
+            ].map((card, idx) => (
+              <div key={idx} className="bg-brand-dark/60 border border-brand-stone/10 rounded-2xl p-6 hover:border-brand-bronze transition-colors">
+                <span className="font-serif text-2xl font-bold text-brand-bronze block mb-2">0{idx + 1}</span>
+                <h4 className="font-serif text-lg font-bold text-brand-white mb-2">{card.title}</h4>
+                <p className="text-xs text-brand-stone leading-relaxed">{card.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
+
       </div>
     </div>
   )

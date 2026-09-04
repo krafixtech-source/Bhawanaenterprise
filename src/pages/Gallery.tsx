@@ -9,37 +9,37 @@ export const Gallery: React.FC = () => {
     {
       title: 'Serenity Condo Suite',
       category: 'RESIDENTIAL',
-      image: '/hero-day.png',
+      image: '/gallery-condo.png',
       desc: 'Jaipur upscale modern apartment flat concept.'
     },
     {
       title: 'Luxury Grand Hotel',
       category: 'COMMERCIAL',
-      image: '/hero-night.png',
+      image: '/gallery-hotel.png',
       desc: 'Premium commercial resort model in Jaipur.'
     },
     {
       title: 'Industrial Warehouse',
       category: 'INDUSTRIAL',
-      image: '/hero-day.png',
+      image: '/gallery-warehouse.png',
       desc: 'Logistic storage layout structure.'
     },
     {
       title: 'Premium Agricultural Land',
       category: 'AGRICULTURAL',
-      image: '/hero-night.png',
+      image: '/gallery-agri.png',
       desc: 'Fertile agricultural fields in Rajasthan.'
     },
     {
       title: 'Luxury Farmhouse Retreat',
       category: 'RESIDENTIAL',
-      image: '/hero-day.png',
+      image: '/gallery-farmhouse.png',
       desc: 'Private green getaway property.'
     },
     {
       title: 'Modern Business Office',
       category: 'COMMERCIAL',
-      image: '/hero-night.png',
+      image: '/gallery-office.png',
       desc: 'Jaipur corporate office workspace layout.'
     }
   ]
@@ -92,8 +92,8 @@ export const Gallery: React.FC = () => {
               className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-luxury-gold transition-colors duration-300 cursor-none flex flex-col justify-between h-full"
               data-cursor="ZOOM"
             >
-              {/* Image box */}
-              <div className="overflow-hidden aspect-video relative">
+              {/* Image box - Taller height */}
+              <div className="overflow-hidden h-72 sm:h-80 relative">
                 <img
                   src={item.image}
                   alt={item.title}
