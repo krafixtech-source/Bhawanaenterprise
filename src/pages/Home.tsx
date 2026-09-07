@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, MessageSquare, Moon, Sun, Key, MapPin, Home as HomeIcon } from 'lucide-react'
+import { ArrowRight, Moon, Sun, Key, MapPin, Home as HomeIcon } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { FloorPlan } from '../components/FloorPlan'
@@ -28,7 +28,6 @@ export const Home: React.FC = () => {
 
 
   const [hoveredService, setHoveredService] = useState<number | null>(null)
-  const [hoveredBuilder, setHoveredBuilder] = useState<number | null>(null)
   const [currentHouseIndex, setCurrentHouseIndex] = useState(0)
 
 
