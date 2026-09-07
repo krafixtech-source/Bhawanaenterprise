@@ -149,14 +149,14 @@ export const About: React.FC = () => {
             {/* Story image tilting on mousemove */}
             <div 
               ref={storyImgRef} 
-              className="rounded-3xl overflow-hidden aspect-square border border-brand-stone/10 shadow-2xl relative will-change-transform transition-all duration-300 ease-out reveal-bottom-to-top"
+              className="rounded-3xl overflow-hidden aspect-square border border-brand-stone/10 shadow-2xl relative will-change-transform transition-all duration-300 ease-out reveal-bottom-to-top bg-gradient-to-b from-brand-charcoal to-brand-dark"
             >
               <img 
-                src="/consultant-desk.png" 
-                alt="Indian real estate consultant reviewing blueprint records" 
-                className="w-full h-full object-cover"
+                src="/founder.png" 
+                alt="Bhawana Enterprises Founder" 
+                className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-brand-dark/15" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/40 via-transparent to-transparent pointer-events-none" />
             </div>
 
             {/* Content details */}

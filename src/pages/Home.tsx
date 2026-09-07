@@ -222,27 +222,38 @@ export const Home: React.FC = () => {
     { name: "LUXURY FARMHOUSE RETREAT", type: "RESIDENTIAL", specs: "3 BEDROOMS · GARDEN", desc: "Private green getaway property.", img: '/gallery-farmhouse.png', link: '/purchase.html' }
   ]
 
-  const builders = [
-    { name: "SUN CITY", projects: ["Sun City Sector 1", "Sun City Heights", "Sun City Arcade"] },
-    { name: "ASHIANA HOUSING", projects: ["Ashiana Greenwood", "Ashiana Umang", "Ashiana Mangalam"] },
-    { name: "MAHIMA GROUP", projects: ["MAHIMA SANSAAR", "VALENZA", "MAHIMA SHUBH NILAYA"] },
-    { name: "TRIMURTY", projects: ["DIVINITY", "GREATER JAGATPURA", "ARABELLA"] }
+  const topDevelopers = [
+    { name: "Manglam Group", logo: "/developers/manglam.png" },
+    { name: "Mahima Group", logo: "/developers/mahima.png" },
+    { name: "Ashiana Housing", logo: "/developers/ashiana.png" },
+    { name: "Vardhman Group", logo: "/developers/vardhman.png" },
+    { name: "Anukampa Group", logo: "/developers/anukampa.png" },
+    { name: "Vatika Group", logo: "/developers/vatika.png" },
+    { name: "Akshat Group", logo: "/developers/akshat.png" },
+    { name: "UDB Group", logo: "/developers/udb.png" },
+    { name: "Dhanuka Group", logo: "/developers/dhanuka.png" },
+    { name: "Unique Builders", logo: "/developers/unique_builders.png" },
+    { name: "Siddha Group", logo: "/developers/siddha.png" },
+    { name: "Chordia Group", logo: "/developers/chordia.png" },
+    { name: "Ashadeep Group", logo: "/developers/ashadeep.png" },
+    { name: "Aashish Group", logo: "/developers/aashish.png" },
+    { name: "Galaxy Enclave", logo: "/developers/galaxy.png" },
+    { name: "KGB Group", logo: "/developers/kgb.png" },
+    { name: "Gulab Chand Group", logo: "/developers/gulab_chand.png" },
+    { name: "JPGS Group", logo: "/developers/jpgs.png" },
+    { name: "Veto Group", logo: "/developers/veto.png" },
+    { name: "Hilton Hotels", logo: "/developers/hilton.png" },
+    { name: "Fairmont Hotels", logo: "/developers/fairmont.png" },
+    { name: "DMart", logo: "/developers/dmart.png" },
+    { name: "Livspace", logo: "/developers/livspace.png" },
+    { name: "Chai Sutta Bar", logo: "/developers/chai_sutta_bar.png" },
+    { name: "Coffee Sutra", logo: "/developers/coffee_sutra.png" },
+    { name: "Frozen Bottle", logo: "/developers/frozen_bottle.png" }
   ]
 
   return (
     <div className="w-full bg-brand-dark text-brand-light font-sans selection:bg-brand-bronze selection:text-brand-dark">
       
-      {/* Floating WhatsApp CTA - Shifted to bottom-24 to avoid Day/Night toggle overlap */}
-      <a
-        href="https://wa.me/917599912345?text=Welcome%20to%20Bhawana%20Enterprises.%20Your%20trusted%20partner%20for%20premium%20%26%20private%20real%20estate%20deals.%0A%0A*Residential%20%26%20Commercial%20Properties*%0A*Agricultural%2C%20Industrial%20%26%20Land%20Deals*%0A*Farmhouses%20%26%20Off-Market%20Opportunities*%0A*Joint%20Ventures%20%26%20Investment%20Deals*%0A%0AConfidential.%20Professional.%20Result-Oriented.%0A%0APlease%20share%20your%20requirement%3A%0AProperty%20type%2C%20location%2C%20budget%2C%20purpose."
-        target="_blank"
-        rel="noreferrer"
-        className="fixed bottom-24 right-8 z-[90] flex items-center justify-center bg-emerald-700 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 pointer-events-auto"
-        data-cursor="CHAT"
-      >
-        <MessageSquare size={22} />
-      </a>
-
       {/* SECTION 01 — CINEMATIC HERO */}
       <div 
         ref={heroContainerRef} 
@@ -280,8 +291,8 @@ export const Home: React.FC = () => {
             ref={heroTitleRef} 
             className="absolute top-[12vh] w-full flex justify-center pointer-events-none select-none z-20 will-change-transform"
           >
-            <h1 className="text-brand-white text-center font-display text-[9.5vw] md:text-[11.5vw] leading-none font-extrabold uppercase tracking-[-0.03em] select-none opacity-95">
-              Your new Home
+            <h1 className="text-brand-white text-center font-display text-[9.5vw] md:text-[9.5vw] leading-none font-extrabold uppercase tracking-[-0.03em] select-none opacity-95">
+              Your Home awaits
             </h1>
           </div>
 
@@ -662,51 +673,51 @@ export const Home: React.FC = () => {
 
 
 
-      {/* SECTION 13 — TOP PROJECTS (Authorized Partner Wall) */}
-      <section className="py-24 px-6 md:px-12 bg-brand-charcoal relative z-40 border-y border-brand-stone/5">
-        <div className="max-w-5xl mx-auto text-center">
-          <span className="text-[10px] tracking-[4px] text-brand-stone font-bold uppercase block mb-3">DEVELOPER PARTNERS</span>
-          <h2 className="text-2xl md:text-3xl font-serif tracking-wider mb-16">Authorized Consultancy Network</h2>
+      {/* SECTION 13 — TOP DEVELOPERS (Collaborating with Rajasthan's top developers) */}
+      <section className="py-24 px-6 md:px-12 bg-brand-charcoal relative z-40 border-y border-brand-stone/10 transition-colors duration-1000">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[10px] tracking-[4px] text-brand-bronze font-bold uppercase block mb-3">TRUSTED NETWORK</span>
+            <h2 className="text-3xl md:text-5xl font-serif tracking-wide text-brand-white leading-tight mb-4">
+              Collaborating with Rajasthan’s top developers.
+            </h2>
+            <p className="text-xs md:text-sm text-brand-stone leading-relaxed font-sans">
+              Bhawana Enterprises works directly with leading real estate developers, institutional builders, and top commercial brands across Rajasthan to deliver verified plots, luxury residences, commercial spaces, and high-yield joint ventures.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {builders.map((builder, idx) => (
+          {/* Marquee Ticker Strip */}
+          <div className="relative overflow-hidden mb-14 py-4 border-y border-brand-bronze/20 bg-brand-dark/80 rounded-2xl shadow-xl backdrop-blur-md">
+            <div className="flex gap-10 animate-marquee whitespace-nowrap items-center">
+              {[...topDevelopers, ...topDevelopers].map((dev, idx) => (
+                <div key={idx} className="flex items-center gap-3 px-3 py-1 bg-white/90 hover:bg-white rounded-xl shadow-sm transition-all duration-300 h-12 min-w-[120px] justify-center">
+                  <img src={dev.logo} alt={dev.name} className="max-h-8 max-w-[100px] object-contain" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Luxury Glass Matrix Logo Showcase */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
+            {topDevelopers.map((dev, idx) => (
               <div
                 key={idx}
-                onMouseEnter={() => setHoveredBuilder(idx)}
-                onMouseLeave={() => setHoveredBuilder(null)}
-                className="p-6 rounded-2xl border border-brand-stone/10 hover:border-brand-bronze bg-brand-dark/50 transition-all duration-300 relative flex flex-col justify-between h-[160px]"
+                className="group relative p-4 rounded-2xl border border-brand-stone/10 hover:border-brand-bronze/60 bg-brand-dark/40 hover:bg-brand-dark/80 backdrop-blur-md transition-all duration-500 flex items-center justify-center h-28 sm:h-32 shadow-lg hover:shadow-[0_10px_25px_rgba(177,138,87,0.15)] hover:-translate-y-1 overflow-hidden"
               >
-                <span className="font-serif text-base font-extrabold tracking-[2px] block text-brand-white">{builder.name}</span>
-                
-                {/* List specific sub-projects on hover */}
-                <div className="h-12 flex flex-col justify-center overflow-hidden">
-                  {hoveredBuilder === idx ? (
-                    <div className="animate-fade-in flex flex-col gap-0.5">
-                      {builder.projects.slice(0, 2).map((proj, pIdx) => (
-                        <span key={pIdx} className="text-[8px] uppercase tracking-widest text-brand-stone font-mono block">
-                          {proj}
-                        </span>
-                      ))}
-                    </div>
-                  ) : (
-                    <span className="text-[8px] uppercase tracking-widest text-brand-stone opacity-50 block font-mono">
-                      Hover to view projects
-                    </span>
-                  )}
+                {/* Subtle Inner Container */}
+                <div className="w-full h-full flex items-center justify-center p-3 rounded-xl bg-white/90 group-hover:bg-white transition-colors duration-300 shadow-inner">
+                  <img
+                    src={dev.logo}
+                    alt={dev.name}
+                    className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
-
-                <a
-                  href={`https://wa.me/917599912345?text=I%20am%20interested%20in%20projects%20by%20${encodeURIComponent(builder.name)}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-[9px] tracking-widest uppercase text-brand-bronze font-bold hover:text-brand-white block mt-3"
-                  data-cursor="INQUIRE"
-                >
-                  WhatsApp Inquire →
-                </a>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 

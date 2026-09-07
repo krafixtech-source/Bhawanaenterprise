@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { MapPin, Send } from 'lucide-react'
+import { MapPin, Send, Loader2 } from 'lucide-react'
+import { submitLead } from '../services/leadService'
 
 export const Career: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,13 +11,30 @@ export const Career: React.FC = () => {
     role: 'consultant',
     cover: '',
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const navigate = useNavigate()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Submit actions here
-    navigate('/thankyou.html')
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    setIsSubmitting(true)
+
+    try {
+      await submitLead({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        role: formData.role,
+        cover: formData.cover,
+        subject: `Career Application: ${formData.role}`,
+        source: 'Career Page Form',
+      })
+    } catch (err) {
+      console.error('Career submission error:', err)
+    } finally {
+      setIsSubmitting(false)
+      navigate('/thankyou.html')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
 
   const jobs = [
@@ -149,11 +167,12 @@ export const Career: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-white text-black hover:bg-luxury-gold hover:text-brand-light py-3 rounded-xl transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold mt-4 flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full bg-brand-bronze text-white hover:bg-brand-white hover:text-brand-dark py-3 rounded-xl transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold mt-4 flex items-center justify-center gap-2 disabled:opacity-50 shadow-md"
                   data-cursor="SUBMIT"
                 >
-                  <Send size={12} />
-                  <span>Submit Application</span>
+                  {isSubmitting ? <Loader2 size={14} className="animate-spin" /> : <Send size={12} />}
+                  <span>{isSubmitting ? 'Submitting Application...' : 'Submit Application'}</span>
                 </button>
               </form>
             </div>

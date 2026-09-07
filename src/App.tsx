@@ -8,6 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Navigation } from './components/Navigation'
 import { Footer } from './components/Footer'
 import { CustomCursor } from './components/CustomCursor'
+import { FloatingWhatsApp } from './components/FloatingWhatsApp'
 
 import { Home } from './pages/Home'
 import { About } from './pages/About'
@@ -91,6 +92,9 @@ const AppContent: React.FC = () => {
 
       {/* Floating Header Navigation */}
       <Navigation />
+
+      {/* Floating Dynamic Theme WhatsApp Icon */}
+      <FloatingWhatsApp />
 
       {/* Main Pages Frame */}
       <main className="relative w-full min-h-screen">

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Loader2 } from 'lucide-react'
+import { submitLead } from '../services/leadService'
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [logoSrc, setLogoSrc] = useState('/logo-light.png')
   const navigate = useNavigate()
 
@@ -21,11 +23,25 @@ export const Footer: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault()
     if (email.trim()) {
-      navigate('/thankyou.html')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setIsSubmitting(true)
+      try {
+        await submitLead({
+          email: email.trim(),
+          subject: 'Newsletter Subscription Request',
+          message: `Subscriber Email: ${email.trim()}`,
+          source: 'Footer Newsletter Form',
+        })
+      } catch (err) {
+        console.error('Subscription error:', err)
+      } finally {
+        setIsSubmitting(false)
+        setEmail('')
+        navigate('/thankyou.html')
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
     }
   }
 
@@ -67,10 +83,11 @@ export const Footer: React.FC = () => {
                 />
                 <button
                   type="submit"
-                  className="absolute right-2 bg-luxury-gold hover:bg-white text-black hover:text-black w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300"
+                  disabled={isSubmitting}
+                  className="absolute right-2 bg-luxury-gold hover:bg-white text-black hover:text-black w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 disabled:opacity-50"
                   data-cursor="SUBSCRIBE"
                 >
-                  <ArrowRight size={14} />
+                  {isSubmitting ? <Loader2 size={14} className="animate-spin" /> : <ArrowRight size={14} />}
                 </button>
               </form>
             </div>

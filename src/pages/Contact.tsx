@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Phone, Mail, MapPin, Clock, Send, Plus, Minus } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Send, Plus, Minus, Loader2 } from 'lucide-react'
+import { submitLead } from '../services/leadService'
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,13 +11,30 @@ export const Contact: React.FC = () => {
     subject: 'Consultation Request',
     message: '',
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
   const navigate = useNavigate()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    navigate('/thankyou.html')
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    setIsSubmitting(true)
+
+    try {
+      await submitLead({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        subject: `Contact Consultation: ${formData.subject}`,
+        message: formData.message,
+        source: 'Contact Page Form',
+      })
+    } catch (err) {
+      console.error('Submission error:', err)
+    } finally {
+      setIsSubmitting(false)
+      navigate('/thankyou.html')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
 
   const faqData = [
@@ -80,9 +98,6 @@ export const Contact: React.FC = () => {
                   <h4 className="text-xs uppercase font-bold tracking-wider mb-1 text-brand-white">Electronic Support</h4>
                   <a href="mailto:sales@bhawanaenterprises.com" className="text-xs text-brand-stone hover:text-brand-light transition-colors block mb-1">
                     sales@bhawanaenterprises.com
-                  </a>
-                  <a href="mailto:info@msmcoretech.com" className="text-xs text-brand-stone hover:text-brand-light transition-colors block">
-                    info@msmcoretech.com
                   </a>
                 </div>
               </div>
@@ -170,11 +185,12 @@ export const Contact: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="sm:col-span-2 w-full bg-brand-white text-brand-dark hover:bg-brand-bronze hover:text-brand-light py-3.5 rounded-xl transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold flex items-center justify-center gap-2 cursor-none"
+                  disabled={isSubmitting}
+                  className="sm:col-span-2 w-full bg-brand-white text-brand-dark hover:bg-brand-bronze hover:text-brand-light py-3.5 rounded-xl transition-all duration-300 font-sans text-xs tracking-widest uppercase font-bold flex items-center justify-center gap-2 cursor-none disabled:opacity-50"
                   data-cursor="SUBMIT"
                 >
-                  <Send size={12} />
-                  <span>Send Message</span>
+                  {isSubmitting ? <Loader2 size={14} className="animate-spin" /> : <Send size={12} />}
+                  <span>{isSubmitting ? 'Sending Lead...' : 'Send Message'}</span>
                 </button>
               </form>
             </div>
